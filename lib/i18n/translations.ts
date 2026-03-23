@@ -94,6 +94,31 @@ export const translations = {
       copyright: "AYA-DIENST Bielefeld. High-End Logistics.",
     },
     whatsapp: { tooltip: "Discuter sur WhatsApp" },
+    calculator: {
+      label: "Simulateur de Coûts", title: "Estimez votre projet d'import.",
+      subtitle: "Un outil transparent pour anticiper vos frais d'achats et de logistique depuis l'Allemagne.",
+      priceLabel: "Prix du bien en Allemagne (€)",
+      categoryLabel: "Catégorie de produit",
+      categories: ["Véhicule d'occasion", "Cosmétiques / Wholesale", "Pièces & Outillage", "Autre"],
+      destinationLabel: "Destination (Afrique)",
+      destinations: ["Sénégal (Dakar)", "Côte d'Ivoire (Abidjan)", "Mali (Bamako)", "Guinée (Conakry)", "Autre"],
+      resultTitle: "Estimation du Coût Total",
+      commissionLabel: "Commission AYA-DIENST (estimée)",
+      shippingLabel: "Frais de logistique (estimés)",
+      totalLabel: "Coût Total Importé",
+      disclaimer: "*Cette simulation est donnée à titre indicatif. Un devis final certifié vous sera envoyé après analyse détaillée.",
+      cta: "Obtenir mon devis certifié"
+    },
+    destinations: {
+      label: "Logistique LocaleAfrique", title: "Où expédions-nous ?",
+      subtitle: "Un réseau maîtrisé pour une livraison sécurisée dans les principaux hubs économiques d'Afrique de l'Ouest.",
+      items: [
+        { country: "Sénégal", city: "Dakar (Port Autonome)", time: "15-20 Jours", safety: "Sécurisé", flag: "🇸🇳" },
+        { country: "Côte d'Ivoire", city: "Abidjan (Vridi)", time: "18-25 Jours", safety: "Premium", flag: "🇨🇮" },
+        { country: "Mali", city: "Bamako (Hub Terrestre)", time: "25-30 Jours", safety: "Suivi Total", flag: "🇲🇱" },
+        { country: "Guinée", city: "Conakry (Port)", time: "20-22 Jours", safety: "Fiable", flag: "🇬🇳" }
+      ]
+    },
   },
 
   en: {
@@ -180,6 +205,31 @@ export const translations = {
       copyright: "AYA-DIENST Bielefeld. High-End Logistics.",
     },
     whatsapp: { tooltip: "Chat on WhatsApp" },
+    calculator: {
+      label: "Cost Simulator", title: "Estimate your import project.",
+      subtitle: "A transparent tool to anticipate your purchase and logistics costs from Germany.",
+      priceLabel: "Item price in Germany (€)",
+      categoryLabel: "Product Category",
+      categories: ["Used Vehicle", "Cosmetics / Wholesale", "Parts & Tools", "Other"],
+      destinationLabel: "Destination (Africa)",
+      destinations: ["Senegal (Dakar)", "Ivory Coast (Abidjan)", "Mali (Bamako)", "Guinea (Conakry)", "Other"],
+      resultTitle: "Estimated Total Cost",
+      commissionLabel: "AYA-DIENST Commission (estimated)",
+      shippingLabel: "Logistics Fees (estimated)",
+      totalLabel: "Total Imported Cost",
+      disclaimer: "*This simulation is for information only. A final certified quote will be sent after detailed analysis.",
+      cta: "Get my certified quote"
+    },
+    destinations: {
+      label: "Local Logistics Africa", title: "Where do we ship?",
+      subtitle: "A mastered network for secure delivery to the main economic hubs of West Africa.",
+      items: [
+        { country: "Senegal", city: "Dakar (Autonomous Port)", time: "15-20 Days", safety: "Secured", flag: "🇸🇳" },
+        { country: "Ivory Coast", city: "Abidjan (Vridi)", time: "18-25 Days", safety: "Premium", flag: "🇨🇮" },
+        { country: "Mali", city: "Bamako (Land Hub)", time: "25-30 Days", safety: "Total Tracking", flag: "🇲🇱" },
+        { country: "Guinea", city: "Conakry (Port)", time: "20-22 Days", safety: "Reliable", flag: "🇬🇳" }
+      ]
+    },
   },
 
   de: {
@@ -266,6 +316,31 @@ export const translations = {
       copyright: "AYA-DIENST Bielefeld. High-End Logistics.",
     },
     whatsapp: { tooltip: "Per WhatsApp chatten" },
+    calculator: {
+      label: "Kosten-Simulator", title: "Schätzen Sie Ihr Importprojekt.",
+      subtitle: "Ein transparentes Werkzeug zur Kalkulation Ihrer Einkaufs- und Logistikkosten aus Deutschland.",
+      priceLabel: "Preis der Ware in Deutschland (€)",
+      categoryLabel: "Produktkategorie",
+      categories: ["Gebrauchtfahrzeug", "Kosmetik / Großhandel", "Teile & Werkzeug", "Sonstiges"],
+      destinationLabel: "Bestimmungsort (Afrika)",
+      destinations: ["Senegal (Dakar)", "Elfenbeinküste (Abidjan)", "Mali (Bamako)", "Guinea (Conakry)", "Sonstiges"],
+      resultTitle: "Geschätzte Gesamtkosten",
+      commissionLabel: "AYA-DIENST Provision (geschätzt)",
+      shippingLabel: "Logistikkosten (geschätzt)",
+      totalLabel: "Import-Gesamtkosten",
+      disclaimer: "*Diese Simulation dient nur zur Orientierung. Ein endgültiges Angebot erhalten Sie nach detaillierter Prüfung.",
+      cta: "Zertifiziertes Angebot anfordern"
+    },
+    destinations: {
+      label: "Lokale Logistik Afrika", title: "Wohin versenden wir?",
+      subtitle: "Ein bewährtes Netzwerk für die sichere Lieferung in die wichtigsten Wirtschaftszentren Westafrikas.",
+      items: [
+        { country: "Senegal", city: "Dakar (Port Autonome)", time: "15-20 Tage", safety: "Gesichert", flag: "🇸🇳" },
+        { country: "Elfenbeinküste", city: "Abidjan (Vridi)", time: "18-25 Tage", safety: "Premium", flag: "🇨🇮" },
+        { country: "Mali", city: "Bamako (Hub Terrestre)", time: "25-30 Tage", safety: "Vollständiges Tracking", flag: "🇲🇱" },
+        { country: "Guinea", city: "Conakry (Port)", time: "20-22 Tage", safety: "Zuverlässig", flag: "🇬🇳" }
+      ]
+    },
   },
 
   ar: {
@@ -352,6 +427,31 @@ export const translations = {
       copyright: "AYA-DIENST بيليفيلد. لوجستيات راقية.",
     },
     whatsapp: { tooltip: "تحدث معنا على واتساب" },
+    calculator: {
+      label: "محاكي التكاليف", title: "قدّر مشروع الاستيراد الخاص بك.",
+      subtitle: "أداة شفافة لتوقع تكاليف الشراء والخدمات اللوجستية من ألمانيا.",
+      priceLabel: "سعر السلعة في ألمانيا (€)",
+      categoryLabel: "فئة المنتج",
+      categories: ["سيارة مستعملة", "مستحضرات تجميل / جملة", "قطع غيار وأدوات", "أخرى"],
+      destinationLabel: "الوجهة (أفريقيا)",
+      destinations: ["السنغال (داكار)", "ساحل العاج (أبيدجان)", "مالي (باماكو)", "غينيا (كوناكري)", "أخرى"],
+      resultTitle: "التكلفة الإجمالية التقديرية",
+      commissionLabel: "عمولة AYA-DIENST (تقديرية)",
+      shippingLabel: "رسوم اللوجستيات (تقديرية)",
+      totalLabel: "إجمالي تكلفة الاستيراد",
+      disclaimer: "*هذه المحاكاة للعلم فقط. سيتم إرسال عرض سعر نهائي معتمد بعد تحليل مفصل.",
+      cta: "احصل على عرض سعري المعتمد"
+    },
+    destinations: {
+      label: "الخدمات اللوجستية المحلية في أفريقيا", title: "أين نشحن؟",
+      subtitle: "شبكة متقنة للتوصيل الآمن إلى المراكز الاقتصادية الرئيسية في غرب أفريقيا.",
+      items: [
+        { country: "السنغال", city: "داكار (الميناء المستقل)", time: "15-20 يوم", safety: "مؤمن", flag: "🇸🇳" },
+        { country: "ساحل العاج", city: "أبيدجان (فريدي)", time: "18-25 يوم", safety: "ممتاز", flag: "🇨🇮" },
+        { country: "مالي", city: "باماكو (مركز بري)", time: "25-30 يوم", safety: "تتبع كامل", flag: "🇲🇱" },
+        { country: "غينيا", city: "كوناكري (الميناء)", time: "20-22 يوم", safety: "موثوق", flag: "🇬🇳" }
+      ]
+    },
   },
 
   zh: {
@@ -438,5 +538,30 @@ export const translations = {
       copyright: "AYA-DIENST 比勒费尔德. 高端物流。",
     },
     whatsapp: { tooltip: "通过WhatsApp联系" },
+    calculator: {
+      label: "成本模拟器", title: "估算您的进口项目。",
+      subtitle: "一个透明的工具，预估您从德国购买和物流的费用。",
+      priceLabel: "德国商品价格 (€)",
+      categoryLabel: "产品类别",
+      categories: ["二手车", "化妆品 / 批发", "零件与工具", "其他"],
+      destinationLabel: "目的地 (非洲)",
+      destinations: ["塞内加尔 (达喀尔)", "科特迪瓦 (阿比让)", "马里 (巴马科)", "几内亚 (科纳克里)", "其他"],
+      resultTitle: "预计总成本",
+      commissionLabel: "AYA-DIENST 佣金 (预估)",
+      shippingLabel: "物流费用 (预估)",
+      totalLabel: "进口总成本",
+      disclaimer: "*此模拟仅供参考。详细分析后将发送最终认证报价。",
+      cta: "获取我的认证报价"
+    },
+    destinations: {
+      label: "非洲本地物流", title: "我们的发货目的地？",
+      subtitle: "成熟的网络，确保安全运达西非主要经济枢纽。",
+      items: [
+        { country: "塞内加尔", city: "达喀尔 (自治港)", time: "15-20 天", safety: "安全保障", flag: "🇸🇳" },
+        { country: "科特迪瓦", city: "阿比让 (弗里迪)", time: "18-25 天", safety: "优质服务", flag: "🇨🇮" },
+        { country: "马里", city: "巴马科 (陆运枢纽)", time: "25-30 天", safety: "全程追踪", flag: "🇲🇱" },
+        { country: "几内亚", city: "科纳克里 (港口)", time: "20-22 天", safety: "可靠", flag: "🇬🇳" }
+      ]
+    },
   },
 } as const
