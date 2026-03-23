@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/lib/i18n/context"
 import { CookieBanner } from "@/components/cookie-banner"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { CustomCursor } from "@/components/custom-cursor"
+import { Preloader } from "@/components/preloader"
 import SchemaOrg from "@/components/schema-org"
 import './globals.css'
 
@@ -94,6 +95,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="font-sans antialiased bg-background text-foreground relative">
         <LanguageProvider>
+          <Preloader />
           {/* Skip to main content — Accessibilité WCAG 2.1 */}
           <a
             href="#main-content"

@@ -10,9 +10,11 @@ export function Hero() {
 
   return (
     <section id="accueil" aria-labelledby="hero-heading" className="relative min-h-screen flex items-center justify-center overflow-hidden noise-texture">
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" aria-hidden="true"
-        style={{ backgroundImage: `linear-gradient(to right bottom, rgba(15, 23, 42, 0.96), rgba(30, 58, 138, 0.72)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070')` }}
-      />
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute inset-[-10%] bg-cover bg-center bg-no-repeat animate-ken-burns"
+          style={{ backgroundImage: `linear-gradient(to right bottom, rgba(15, 23, 42, 0.96), rgba(30, 58, 138, 0.72)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070')` }}
+        />
+      </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/15 rounded-full blur-[140px] pointer-events-none z-0" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 lg:px-8 text-center w-full">
