@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     alternateLocale: ["en_US", "de_DE", "ar_SA", "zh_CN"],
     type: "website",
     images: [{
-      url: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200",
+      url: "https://aya-dienst.com/logo.png",
       width: 1200,
       height: 630,
       alt: "AYA-DIENST — Agents d'Achats Premium en Allemagne",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AYA-DIENST | L'Import d'Allemagne sur-mesure",
     description: "Votre bureau sur le terrain à Bielefeld — auto, composants, déstockages cosmétiques, et logistique Afrique.",
-    images: ["https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1200"],
+    images: ["https://aya-dienst.com/logo.png"],
   },
   alternates: {
     canonical: "https://aya-dienst.com",
@@ -67,12 +67,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/apple-touch-icon.png",
-    shortcut: "/favicon-16x16.png",
+    icon: "/logo.png",
+    apple: "/logo.png",
+    shortcut: "/logo.png",
   },
   verification: {
     google: "aya-dienst-google-verification",
