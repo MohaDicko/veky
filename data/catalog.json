@@ -1,81 +1,82 @@
 [
   {
-    "id": "car_1701000000",
+    "id": "1711202201999",
     "type": "car",
-    "title": "Mercedes-Benz Classe C 220d AMG Line",
-    "pricePort": "18 500 000 FCFA",
-    "priceCountry": "22 100 000 FCFA",
-    "spec1": "Diesel",
-    "spec2": "45 000 km",
-    "spec3": "2021",
-    "spec4": "Automatique 9G-Tronic",
+    "title": "Mercedes-Benz GLE 350 de 4MATIC AMG Line",
+    "pricePort": "62 500 €",
+    "priceCountry": "44 800 000 FCFA",
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200",
+    "images": [
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200",
+      "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200",
+      "https://images.unsplash.com/photo-1621213348161-574341fb00c4?w=1200",
+      "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200"
+    ],
+    "spec1": "Hybride (Diesel/Électrique)",
+    "spec2": "34 500 km",
+    "spec3": "2022",
+    "spec4": "Automatique 9G-TRONIC",
     "spec5": "Noir Obsidienne Métallisé",
-    "spec6": "2.0L - 200 ch",
-    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1200",
-    "images": [
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1200",
-      "https://images.unsplash.com/photo-1605559424843-9e1160ed8aeb?q=80&w=1200",
-      "https://images.unsplash.com/photo-1621244249240-02bd0ce73ced?q=80&w=1200"
-    ],
-    "desc": "Véhicule première main, inspection certifiée réseau Mercedes en Allemagne. Pack AMG Line intérieur et extérieur avec volant cuir sport. Toit panoramique et sièges chauffants. Très faible consommation sur longue distance."
+    "spec6": "2.0 L - 320 ch cumulés",
+    "desc": "Véhicule de première main, origine concession diplomatique allemande (Stuttgart). État exceptionnel, carnet d'entretien numérique 100% à jour chez Mercedes-Benz.\n\nFinition AMG Line Extérieur & Intérieur. Jantes alliage 21 pouces, Toit ouvrant panoramique, Pack Night, Système de sonorisation Burmester Surround, Suspension Airmatic.\n\nAucun frais à prévoir. Batterie haute tension testée et garantie. Taxe Cedeao pré-évaluée à l'avantage de l'immatriculation."
   },
   {
-    "id": "car_1701000001",
+    "id": "1711202202888",
     "type": "car",
-    "title": "Toyota RAV4 2.5 HSD AWD Lounge",
-    "pricePort": "16 200 000 FCFA",
-    "priceCountry": "19 500 000 FCFA",
-    "spec1": "Hybride (Ess/Élec)",
-    "spec2": "68 000 km",
+    "title": "BMW X5 xDrive30d M Sport - Full Options",
+    "pricePort": "48 900 €",
+    "priceCountry": "36 500 000 FCFA",
+    "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1200",
+    "images": [
+      "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1200",
+      "https://images.unsplash.com/photo-1556053308-f418d1a12365?w=1200",
+      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1200"
+    ],
+    "spec1": "Diesel (Euro 6d-TEMP)",
+    "spec2": "68 200 km",
     "spec3": "2020",
-    "spec4": "e-CVT",
-    "spec5": "Blanc Nacré",
-    "spec6": "2.5L - 222 ch (4x4)",
-    "image": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1200",
-    "images": [
-      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1200",
-      "https://images.unsplash.com/photo-1626359332501-c9676579ab0e?q=80&w=1200",
-      "https://images.unsplash.com/photo-1594203525281-aacec79fa26c?q=80&w=1200"
-    ],
-    "desc": "Le roi indétrônable des pistes africaines et de la ville. Consommation ridicule grâce au système hybride Toyota. Châssis très robuste et garde au sol élevée, idéal pour les routes de brousse ou la saison des pluies. Révisé complet avant départ."
+    "spec4": "Automatique Sport 8 R.",
+    "spec5": "Bleu Tanzanite Métallisé",
+    "spec6": "V6 3.0 L - 265 chevaux",
+    "desc": "Splendide BMW X5 M Sport directement importé de Munich (véhicule d'ex-direction BMW Group). Moteur extrêmement robuste et réputé en Afrique pour sa durabilité. \n\nINTÉRIEUR: Sellerie Cuir Vernasca perforé Cognac. Affichage Tête Haute (HUD), BMW Laserlights, Driving Assistant Professional, Parking Assistant Plus avec Caméra 360°.\n\nLe véhicule a été entièrement révisé en février 2026. Plaquettes et pneus run-flat neufs. Prêt à être expédié via Anvers immédiatement après validation."
   },
   {
-    "id": "part_1701000002",
+    "id": "1711202203777",
     "type": "part",
-    "title": "Moteur Complet V8 Turbo Diesel",
-    "pricePort": "3 500 000 FCFA",
-    "priceCountry": "3 750 000 FCFA",
-    "spec1": "Land Cruiser VDJ200",
-    "spec2": "Occasion révisée A+",
-    "spec3": "V8 4.5L",
-    "spec4": "320 kg sur Palette",
-    "spec5": "1VD-FTV",
-    "spec6": "Stock Stuttgart (DE)",
-    "image": "https://images.unsplash.com/photo-1590494056286-578d0f1bd923?q=80&w=1200",
+    "title": "Moteur Complet Mercedes OM 651 (220 CDI)",
+    "pricePort": "3 200 €",
+    "priceCountry": "2 850 000 FCFA",
+    "image": "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200",
     "images": [
-      "https://images.unsplash.com/photo-1590494056286-578d0f1bd923?q=80&w=1200",
-      "https://images.unsplash.com/photo-1635334135541-b21a8cdff0ad?q=80&w=1200"
+      "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200",
+      "https://images.unsplash.com/photo-1625442566710-90febe0c8a5a?w=1200"
     ],
-    "desc": "Moteur extrêmement robuste et rare, importé du réseau allemand. Compression testée par nos soins, pas de fuite d'huile. Vendu complet avec turbo, alternateur et injecteurs. Fixé sur palette prête à être enfournée au port maritime d'Anvers."
+    "spec1": "Classe C (W204/W205), E, GLK, Sprinter",
+    "spec2": "Occasion certifiée (Testé)",
+    "spec3": "Dérivé modèles 2011-2018",
+    "spec4": "Environ 190 kg",
+    "spec5": "OM651.911",
+    "spec6": "Daimler AG (Allemagne)",
+    "desc": "Moteur complet OM 651 démonté sur un véhicule accidenté (arrière) en Allemagne, certifié à 114.000 km réels. \n\nVendu complet avec injection (injecteurs Delphi contrôlés), turbocompresseur, pompe à eau et faisceau moteur tronqué. \n\nIdéal pour remplacement standard sur Sprinter ou Classe C/E taxi. Compressions testées à froid, aucun claquement de chaîne (tendeur vérifié avant démontage). \n\nLivré sur palette sanglée et filmée avec protection anti-corrosion marine pour le transport."
   },
   {
-    "id": "cosmetic_1701000003",
+    "id": "1711202204666",
     "type": "cosmetic",
-    "title": "Palette Destockage Dermo-Cosmétique",
-    "pricePort": "1 800 000 FCFA",
-    "priceCountry": "1 950 000 FCFA",
-    "spec1": "Eucerin & Nivea",
-    "spec2": "850 Unités (Mixte)",
-    "spec3": "Soin Corps & Visage",
-    "spec4": "1 Palette Filmée",
-    "spec5": "Octobre 2027",
-    "spec6": "Certificat B2B Direct",
-    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=1200",
+    "title": "Palette Destockage PREMIUM Dermatologie & Skincare",
+    "pricePort": "4 500 €",
+    "priceCountry": "3 400 000 FCFA",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bf85033c5a?w=1200",
     "images": [
-      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=1200",
-      "https://images.unsplash.com/photo-1615397323113-24155fb21cb1?q=80&w=1200",
-      "https://images.unsplash.com/photo-1556228578-8d89cb21eb3b?q=80&w=1200"
+      "https://images.unsplash.com/photo-1596462502278-27bf85033c5a?w=1200",
+      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=1200",
+      "https://images.unsplash.com/photo-1608248593802-8081547b9484?w=1200"
     ],
-    "desc": "Achat direct chez les grossistes allemands certifiés. Ce lot mixte haut de gamme est parfait pour l'approvisionnement des pharmacies de Bamako ou cliniques dermatologiques. Remise allant jusqu'à 50% du prix public conseillé avec conditions de conservation scellées."
+    "spec1": "Eucerin, Balea, La Roche-Posay",
+    "spec2": "Palette Complète (~800 pièces)",
+    "spec3": "Soins Visage & Corps",
+    "spec4": "Palette Europe Standard (120x80)",
+    "spec5": "Validité Garantie > Nov 2027",
+    "spec6": "Lots de surstock pharmacies allemandes",
+    "desc": "Excellente opportunité B2B pour parapharmacies ou revendeurs premium en Afrique de l'Ouest. \n\nCe lot contient uniquement des produits authentiques et traçables issus du marché allemand (pas de contrefaçons ni de marché gris oriental). \n\nDétails de la composition (approx) :\n- 30% Gels moussants et nettoyants dermo-cosmétiques (Peaux sensibles).\n- 40% Crèmes hydratantes corps & Mains (Balea, Neutrogena).\n- 30% Soins ciblés visage (Sérums Vitamine C, Hyaluron).\n\nLes produits sont stockés en entrepôt climatisé en RFA. Filmage opaque pour la sécurité durant le transport maritime."
   }
 ]
