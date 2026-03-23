@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUpRight, CarFront, Wrench, Sparkles, Images, ChevronLeft, ChevronRight, X, MessageCircle } from "lucide-react"
+import { ArrowUpRight, CarFront, Wrench, Sparkles, Images, ChevronLeft, ChevronRight, X, MessageCircle, ShieldCheck, Truck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 // @ts-ignore
@@ -199,6 +199,7 @@ function ProductCard({ item, index, onClick }: { item: any, index: number, onCli
 
 function ProductModal({ item, onClose }: { item: any, onClose: () => void }) {
   const images = item.images && item.images.length > 0 ? item.images : [item.image]
+  const [current, setCurrent] = useState(0)
 
   // Disable scroll when modal is open
   useEffect(() => {
@@ -207,102 +208,122 @@ function ProductModal({ item, onClose }: { item: any, onClose: () => void }) {
   }, [])
 
   return (
-    <div className="fixed inset-0 z-[100] flex animate-in fade-in duration-500">
-      <div 
-        className="absolute inset-0 bg-background/95 backdrop-blur-3xl" 
-        onClick={onClose} 
-      />
+    <div className="fixed inset-0 z-[100] flex justify-center items-end sm:items-center bg-black/60 backdrop-blur-sm p-0 sm:p-6 lg:p-12 animate-in fade-in duration-300">
+      <div className="absolute inset-0" onClick={onClose} />
       
-      {/* Close Button Top Right Fixed */}
-      <button 
-        onClick={onClose} 
-        className="absolute top-4 right-4 lg:top-8 lg:right-8 z-[110] w-12 h-12 lg:w-16 lg:h-16 bg-foreground/5 hover:bg-foreground/10 text-foreground rounded-full flex items-center justify-center backdrop-blur-md transition-all group border border-border/50"
-      >
-         <X className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform" />
-      </button>
-
-      {/* Main Container */}
-      <div className="relative w-full max-w-[1500px] h-full mx-auto flex flex-col md:flex-row overflow-hidden overflow-y-auto md:overflow-hidden animate-in slide-in-from-bottom-10 duration-700">
+      {/* Modal Container - Leboncoin/Avito Style */}
+      <div className="relative w-full max-w-[1200px] bg-background sm:rounded-[2rem] shadow-2xl flex flex-col max-h-[95vh] animate-in slide-in-from-bottom-10 sm:zoom-in-95 duration-500 overflow-hidden ring-1 ring-border/20">
         
-        {/* Left: Scrollable Massive Images (The Gallery) */}
-        <div className="w-full md:w-[60%] lg:w-[65%] md:h-full md:overflow-y-auto scroll-smooth flex flex-col md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-           {images.map((img: string, i: number) => (
-             <div key={i} className="w-full relative bg-muted/10 min-h-[40vh] md:min-h-screen flex items-center justify-center group overflow-hidden border-b border-border/20 last:border-b-0">
-                 <img 
-                   src={img} 
-                   alt={`${item.title} Vue ${i + 1}`} 
-                   className="w-full h-auto min-h-full object-cover transition-transform duration-[2s] hover:scale-105" 
-                   loading={i === 0 ? "eager" : "lazy"} 
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-             </div>
-           ))}
+        {/* Header - Sticky */}
+        <div className="flex justify-between items-center p-4 sm:px-8 sm:py-5 border-b border-border/40 sticky top-0 bg-background/90 backdrop-blur-md z-20">
+           <h3 className="font-bold text-lg sm:text-xl text-foreground truncate max-w-[80%]">{item.title}</h3>
+           <button onClick={onClose} className="w-10 h-10 bg-muted hover:bg-muted-foreground/20 rounded-full flex items-center justify-center transition-colors"><X className="w-5 h-5"/></button>
         </div>
 
-        {/* Right: Sticky Details Window */}
-        <div className="w-full md:w-[40%] lg:w-[35%] bg-background/80 backdrop-blur-xl p-8 md:p-12 lg:p-16 flex flex-col z-10 shadow-[-30px_0_60px_-15px_rgba(0,0,0,0.15)] border-l border-white/10 md:h-full md:sticky top-0 right-0">
+        {/* Scrollable Content */}
+        <div className="flex flex-col lg:flex-row overflow-y-auto w-full hide-scrollbar">
           
-          <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <div className="mb-10">
-               <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-primary mb-6 flex items-center gap-3">
-                 <span className="w-10 h-px bg-primary/50" />
-                 {item.type === "car" ? "Véhicule Premium" : item.type === "part" ? "Pièce Auto" : "Lot Cosmétique"}
-               </p>
-               <h2 className="text-4xl lg:text-5xl font-black text-foreground leading-[1.1] mb-8 tracking-tight drop-shadow-sm">{item.title}</h2>
-               
-               <p className="text-lg text-muted-foreground font-light leading-relaxed">
-                 {item.desc}
-               </p>
-            </div>
-
-            {/* Spec Matrix */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
-               {[
-                 { label: item.type === "car" ? "Carburant" : item.type === "part" ? "Compatible" : "Marque", value: item.spec1 || item.meta1 },
-                 { label: item.type === "car" ? "Kilométrage" : item.type === "part" ? "État" : "Quantité", value: item.spec2 || item.meta2 },
-                 { label: item.type === "car" ? "Année" : item.type === "part" ? "Version" : "Catégorie", value: item.spec3 },
-                 { label: item.type === "car" ? "Transmission" : item.type === "part" ? "Poids" : "Conditionnement", value: item.spec4 },
-                 { label: item.type === "car" ? "Couleur" : item.type === "part" ? "Référence" : "DLUO", value: item.spec5 },
-                 { label: item.type === "car" ? "Moteur" : item.type === "part" ? "Origine" : "Infos", value: item.spec6 },
-               ].filter(s => s.value).map((spec, idx) => (
-                 <div key={idx} className="p-4 rounded-3xl bg-card border border-border/50 flex flex-col gap-1.5 hover:border-primary/30 transition-colors shadow-sm">
-                   <span className="text-[9px] uppercase tracking-[0.1em] text-muted-foreground font-bold whitespace-nowrap overflow-hidden text-ellipsis">{spec.label}</span>
-                   <span className="text-sm sm:text-base font-bold text-foreground leading-tight line-clamp-2" title={spec.value}>{spec.value}</span>
-                 </div>
-               ))}
-            </div>
-
-            {/* Pricing Section Premium */}
-            <div className="pt-8 border-t border-border/40 pb-8">
-               <div className="space-y-8">
-                 <div className="flex justify-between items-end opacity-70">
-                   <span className="text-xs font-bold uppercase tracking-widest leading-tight w-1/2">Valeur Nette port<br/>(Dakar / Abidjan)</span>
-                   <span className="text-2xl font-medium">{item.pricePort}</span>
-                 </div>
-                 <div className="flex flex-col gap-3">
-                   <span className="text-[10px] bg-primary/10 text-primary self-start px-4 py-2 rounded-full font-bold uppercase tracking-[0.2em]">Tarif Rendu Final (Option Livré Mali/Niger)</span>
-                   <span className="text-4xl lg:text-5xl font-black text-foreground drop-shadow-sm truncate" title={item.priceCountry}>{item.priceCountry}</span>
-                 </div>
+          {/* LEFT: Gallery, Critères, Description */}
+          <div className="w-full lg:w-[65%] p-4 sm:p-8 border-r border-border/40 flex flex-col gap-10">
+             
+             {/* Galerie */}
+             <div>
+               {/* Main Image */}
+               <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-muted/30 rounded-2xl overflow-hidden group border border-border/40">
+                  <img src={images[current]} className="w-full h-full object-contain bg-black/5" alt={item.title} />
+                  {images.length > 1 && (
+                    <>
+                      <button onClick={(e) => { e.stopPropagation(); setCurrent(p => p===0 ? images.length-1 : p-1) }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"><ChevronLeft /></button>
+                      <button onClick={(e) => { e.stopPropagation(); setCurrent(p => (p+1)%images.length) }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"><ChevronRight /></button>
+                    </>
+                  )}
+                  <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-md text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-lg shadow-sm">
+                    {current + 1} / {images.length}
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-primary/90 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-lg shadow-sm backdrop-blur-md">
+                      {item.type === "car" ? "Automobile" : item.type === "part" ? "Pièce / Moteur" : "Lot Cosmétique"}
+                    </span>
+                  </div>
                </div>
-            </div>
+
+               {/* Thumbnails */}
+               {images.length > 1 && (
+                  <div className="flex gap-2 mt-3 overflow-x-auto pb-2 snap-x hide-scrollbar">
+                     {images.map((img: string, i: number) => (
+                        <button key={i} onClick={() => setCurrent(i)} className={cn("relative h-20 sm:h-24 aspect-[4/3] flex-shrink-0 border-2 rounded-xl overflow-hidden snap-start transition-all bg-muted", current === i ? "border-primary shadow-sm" : "border-transparent opacity-60 hover:opacity-100")}>
+                           <img src={img} className="w-full h-full object-cover" />
+                        </button>
+                     ))}
+                  </div>
+               )}
+             </div>
+
+             <div className="h-px bg-border/40 w-full" />
+
+             {/* Critères / Specs (Avito Grid style) */}
+             <div>
+                <h4 className="text-2xl font-black mb-6 text-foreground">Critères de l'annonce</h4>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-0 border-t border-l border-border/60 rounded-2xl overflow-hidden shadow-sm">
+                   {[
+                     { label: item.type === "car" ? "Carburant" : item.type === "part" ? "Compatible" : "Marque", value: item.spec1 || item.meta1 },
+                     { label: item.type === "car" ? "Kilométrage" : item.type === "part" ? "État" : "Quantité", value: item.spec2 || item.meta2 },
+                     { label: item.type === "car" ? "Année-Modèle" : item.type === "part" ? "Version" : "Catégorie", value: item.spec3 },
+                     { label: item.type === "car" ? "Boîte de vitesse" : item.type === "part" ? "Poids (kg)" : "Format", value: item.spec4 },
+                     { label: item.type === "car" ? "Teinte / Couleur" : item.type === "part" ? "Réf. OEM" : "DLUO Maxi", value: item.spec5 },
+                     { label: item.type === "car" ? "Motorisation" : item.type === "part" ? "Fabriquant" : "Informations", value: item.spec6 },
+                   ].map((spec, idx) => spec.value ? (
+                     <div key={idx} className="flex flex-col border-b border-r border-border/60 p-4 sm:p-5 bg-card hover:bg-muted/30 transition-colors">
+                       <span className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest font-bold opacity-80">{spec.label}</span>
+                       <span className="text-sm sm:text-base font-bold text-foreground mt-1 break-words">{spec.value}</span>
+                     </div>
+                   ) : null)}
+                </div>
+             </div>
+
+             <div className="h-px bg-border/40 w-full" />
+
+             {/* Description */}
+             <div className="mb-10 lg:mb-0">
+                <h4 className="text-2xl font-black mb-6 text-foreground">Description détaillée</h4>
+                <p className="whitespace-pre-wrap text-muted-foreground leading-relaxed text-base sm:text-lg bg-muted/10 p-6 rounded-2xl border border-border/40">{item.desc}</p>
+             </div>
           </div>
 
-          {/* Sticky Footer */}
-          <div className="mt-auto pt-6 bg-background/0 relative z-20">
-             <a 
-               href={`https://wa.me/4917621374833?text=${encodeURIComponent(`Bonjour AYA-DIENST, cette offre exclusive m'intéresse : ${item.title}. Plus de détails ?`)}`} 
-               target="_blank" rel="noopener noreferrer"
-               className="w-full flex items-center justify-between px-8 rounded-full h-20 sm:h-24 text-lg sm:text-xl bg-[#25D366] text-white font-bold hover:bg-[#128C7E] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl shadow-[#25D366]/30 group overflow-hidden relative"
-             >
-                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                <span className="relative z-10 flex items-center gap-4">
-                  <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8" /> Discuter de l'offre
-                </span>
-                <ArrowUpRight className="w-6 h-6 sm:w-8 sm:h-8 relative z-10 group-hover:rotate-45 group-hover:scale-125 transition-transform duration-500" />
-             </a>
-             <p className="text-center text-[10px] text-muted-foreground font-bold uppercase tracking-[0.2em] mt-6 flex justify-center items-center gap-2 opacity-60">
-               * Aucun paiement immédiat requis.
-             </p>
+          {/* RIGHT: Price & Contact Action Box (Sticky on Desktop layout) */}
+          <div className="w-full lg:w-[35%] bg-muted/10 p-4 sm:p-8 flex flex-col border-l border-white/5">
+             <div className="bg-background rounded-3xl p-6 sm:p-8 shadow-xl border border-border/60 lg:sticky top-8">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-3">Référence AYA-{item.id?.slice(-6) || "XXX"}</p>
+                <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-8 leading-tight">{item.title}</h2>
+                
+                <div className="space-y-4 mb-8 bg-card rounded-2xl border border-border/50 overflow-hidden divide-y divide-border/50 shadow-sm">
+                   <div className="p-5 flex flex-col bg-muted/30">
+                      <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1.5 flex items-center justify-between">
+                         Valeur Port (Dakar/Abidjan)
+                         <span className="bg-foreground/10 px-2 py-0.5 rounded text-[9px]">HT</span>
+                      </span>
+                      <span className="text-xl font-bold text-foreground/80">{item.pricePort}</span>
+                   </div>
+                   <div className="p-6 sm:p-8 bg-primary/5 relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-2xl rounded-full" />
+                      <span className="text-[10px] font-black uppercase text-primary tracking-[0.2em] block mb-2 relative z-10">Option Tarif Rendu (Mali/Niger)</span>
+                      <span className="text-3xl sm:text-4xl font-black text-primary relative z-10 leading-none">{item.priceCountry}</span>
+                   </div>
+                </div>
+
+                <a 
+                  href={`https://wa.me/4917621374833?text=${encodeURIComponent(`Bonjour AYA-DIENST, je vous contacte pour cette annonce : ${item.title} (Réf AYA-${item.id?.slice(-6) || "XXX"}). Pouvez-vous me donner la procédure d'achat ?`)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-3 rounded-2xl h-16 sm:h-[72px] text-lg bg-[#25D366] text-white font-bold hover:bg-[#128C7E] transition-all hover:scale-[1.02] shadow-[0_10px_30px_-10px_rgba(37,211,102,0.4)]"
+                >
+                  <MessageCircle className="w-6 h-6"/> Discuter via WhatsApp
+                </a>
+
+                <div className="mt-8 pt-6 border-t border-border/40 flex flex-col gap-4 text-xs font-bold text-foreground/70 uppercase tracking-widest">
+                   <div className="flex items-center gap-3"><ShieldCheck className="w-5 h-5 text-primary shrink-0"/> Inspection physique avant achat</div>
+                   <div className="flex items-center gap-3"><Truck className="w-5 h-5 text-primary shrink-0"/> Fret maritime via Anvers contrôlé</div>
+                </div>
+             </div>
           </div>
           
         </div>
