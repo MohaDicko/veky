@@ -51,18 +51,24 @@ export function Contact() {
                   <span className="text-xl font-medium text-foreground group-hover:text-primary transition-colors">ousmanemahamadtoure@gmail.com</span>
                 </div>
               </a>
-              <a href="tel:+4917621374833" className="flex items-start gap-6 group cursor-pointer">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl glass-morphism flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500"><Phone className="h-6 w-6" /></div>
-                <div>
+              <a href="tel:+4917621374833" className="flex items-start gap-6 group cursor-pointer hover:bg-muted/50 p-2 -m-2 rounded-2xl transition-colors">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl glass-morphism flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm"><Phone className="h-6 w-6" /></div>
+                <div className="flex flex-col items-start">
                   <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground mb-1">{t.contact.phoneLabel}</p>
                   <span className="text-xl font-medium text-foreground group-hover:text-primary transition-colors">+49 176 2137 4833</span>
+                  <span className="text-[10px] font-bold text-primary uppercase bg-primary/10 px-3 py-1 rounded-full mt-2 group-hover:bg-primary group-hover:text-white transition-colors flex items-center gap-1">
+                    <Phone className="h-3 w-3" /> Cliquez pour appeler
+                  </span>
                 </div>
               </a>
-              <a href="tel:+22377157399" className="flex items-start gap-6 group cursor-pointer">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl glass-morphism flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500"><Phone className="h-6 w-6" /></div>
-                <div>
+              <a href="tel:+22377157399" className="flex items-start gap-6 group cursor-pointer hover:bg-muted/50 p-2 -m-2 rounded-2xl transition-colors">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl glass-morphism flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm"><Phone className="h-6 w-6" /></div>
+                <div className="flex flex-col items-start">
                   <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground mb-1">Contact Mali 🇲🇱</p>
                   <span className="text-xl font-medium text-foreground group-hover:text-primary transition-colors">+223 77 15 73 99</span>
+                  <span className="text-[10px] font-bold text-primary uppercase bg-primary/10 px-3 py-1 rounded-full mt-2 group-hover:bg-primary group-hover:text-white transition-colors flex items-center gap-1">
+                    <Phone className="h-3 w-3" /> Cliquez pour appeler
+                  </span>
                 </div>
               </a>
               <div className="flex items-start gap-6 group">

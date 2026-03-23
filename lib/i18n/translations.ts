@@ -54,13 +54,13 @@ export const translations = {
     testimonials: { label: "Témoignages", title: "Ils nous font confiance.", prev: "Précédent", next: "Suivant" },
     about: {
       label: "Notre ADN", title: "L'import-export réinventé par le terrain.",
-      p1: "Acheter à l'étranger représente souvent un risque. C'est pour cela que Veky-Shop a été fondé.",
+      p1: "Acheter à l'étranger représente souvent un risque. C'est pour cela que AYA-DIENST a été fondé.",
       p2: "Depuis nos bureaux à Bielefeld, nous agissons comme votre propre technicien et négociateur sur le sol européen.",
       badge1: "Bielefeld", badge2: "Siège social, Allemagne",
       values: ["Présence physique à Bielefeld pour l'inspection des biens", "Négociation des tarifs sans marge cachée (commission claire)", "Organisation du transport terrestre et maritime", "Un seul interlocuteur pour toutes vos démarches"],
     },
     faq: {
-      label: "FAQ", title: "Questions fréquentes.", subtitle: "Tout ce que vous devez savoir avant de démarrer avec Veky-Shop.",
+      label: "FAQ", title: "Questions fréquentes.", subtitle: "Tout ce que vous devez savoir avant de démarrer avec AYA-DIENST.",
       cta: "Poser une autre question",
       items: [
         { q: "Comment fonctionne votre système de commission ?", a: "Notre commission est fixe et communiquée dès le devis — généralement entre 5% et 10% du prix d'achat. Il n'y a aucun frais caché. Vous payez le prix réel du bien + notre commission + les frais de transport documentés." },
@@ -88,10 +88,10 @@ export const translations = {
     },
     footer: {
       tagline: "L'excellence Allemande, livrée chez vous.",
-      ctaTitle: "Prêt pour l'import ?", ctaSubtitle: "Veky-Shop est votre bureau opérationnel en Allemagne.",
+      ctaTitle: "Prêt pour l'import ?", ctaSubtitle: "AYA-DIENST est votre bureau opérationnel en Allemagne.",
       ctaBtn: "Lancer un projet",
       servicesTitle: "Services", agencyTitle: "Agence", helpTitle: "Aide",
-      copyright: "Veky-Shop Bielefeld. High-End Logistics.",
+      copyright: "AYA-DIENST Bielefeld. High-End Logistics.",
     },
     whatsapp: { tooltip: "Discuter sur WhatsApp" },
   },
@@ -140,13 +140,13 @@ export const translations = {
     testimonials: { label: "Testimonials", title: "They trust us.", prev: "Previous", next: "Next" },
     about: {
       label: "Our DNA", title: "Import-export reinvented from the field.",
-      p1: "Buying abroad often carries risk. That is why Veky-Shop was founded.",
+      p1: "Buying abroad often carries risk. That is why AYA-DIENST was founded.",
       p2: "From our offices in Bielefeld, we act as your own technician and negotiator on European soil.",
       badge1: "Bielefeld", badge2: "Headquarters, Germany",
       values: ["Physical presence in Bielefeld for goods inspection", "Transparent pricing with no hidden margin", "Organisation of land and sea transport", "A single point of contact for all your needs"],
     },
     faq: {
-      label: "FAQ", title: "Frequently asked questions.", subtitle: "Everything you need to know before starting your project with Veky-Shop.",
+      label: "FAQ", title: "Frequently asked questions.", subtitle: "Everything you need to know before starting your project with AYA-DIENST.",
       cta: "Ask another question",
       items: [
         { q: "How does your commission system work?", a: "Our commission is fixed and communicated from the first quote — generally between 5% and 10% of the purchase price. No hidden fees. You pay the actual price + our commission + documented shipping costs." },
@@ -174,10 +174,10 @@ export const translations = {
     },
     footer: {
       tagline: "German excellence, delivered to you.",
-      ctaTitle: "Ready to import?", ctaSubtitle: "Veky-Shop is your operational office in Germany.",
+      ctaTitle: "Ready to import?", ctaSubtitle: "AYA-DIENST is your operational office in Germany.",
       ctaBtn: "Launch a project",
       servicesTitle: "Services", agencyTitle: "Agency", helpTitle: "Help",
-      copyright: "Veky-Shop Bielefeld. High-End Logistics.",
+      copyright: "AYA-DIENST Bielefeld. High-End Logistics.",
     },
     whatsapp: { tooltip: "Chat on WhatsApp" },
   },
@@ -226,13 +226,13 @@ export const translations = {
     testimonials: { label: "Referenzen", title: "Sie vertrauen uns.", prev: "Zurück", next: "Weiter" },
     about: {
       label: "Unsere DNA", title: "Import-Export neu erfunden.",
-      p1: "Ein Kauf im Ausland birgt oft Risiken. Genau deshalb wurde Veky-Shop gegründet.",
+      p1: "Ein Kauf im Ausland birgt oft Risiken. Genau deshalb wurde AYA-DIENST gegründet.",
       p2: "Von unserem Büro in Bielefeld aus agieren wir als Ihr technischer Fachmann und Verhandlungsführer auf europäischem Boden.",
       badge1: "Bielefeld", badge2: "Hauptsitz, Deutschland",
       values: ["Physische Präsenz in Bielefeld für Wareninspektion", "Transparente Preisgestaltung ohne versteckte Margen", "Organisation von Land- und Seetransport", "Ein einziger Ansprechpartner für alle Ihre Anliegen"],
     },
     faq: {
-      label: "FAQ", title: "Häufig gestellte Fragen.", subtitle: "Alles, was Sie wissen müssen, bevor Sie Ihr Projekt mit Veky-Shop starten.",
+      label: "FAQ", title: "Häufig gestellte Fragen.", subtitle: "Alles, was Sie wissen müssen, bevor Sie Ihr Projekt mit AYA-DIENST starten.",
       cta: "Weitere Frage stellen",
       items: [
         { q: "Wie funktioniert Ihr Provisionsystem?", a: "Unsere Provision ist fest und wird im Angebot kommuniziert — in der Regel zwischen 5% und 10% des Kaufpreises. Keine versteckten Gebühren. Sie zahlen den tatsächlichen Preis + Provision + dokumentierte Versandkosten." },
@@ -260,10 +260,10 @@ export const translations = {
     },
     footer: {
       tagline: "Deutsche Exzellenz, zu Ihnen geliefert.",
-      ctaTitle: "Bereit für den Import?", ctaSubtitle: "Veky-Shop ist Ihr operatives Büro in Deutschland.",
+      ctaTitle: "Bereit für den Import?", ctaSubtitle: "AYA-DIENST ist Ihr operatives Büro in Deutschland.",
       ctaBtn: "Projekt starten",
       servicesTitle: "Leistungen", agencyTitle: "Agentur", helpTitle: "Hilfe",
-      copyright: "Veky-Shop Bielefeld. High-End Logistics.",
+      copyright: "AYA-DIENST Bielefeld. High-End Logistics.",
     },
     whatsapp: { tooltip: "Per WhatsApp chatten" },
   },
@@ -312,13 +312,13 @@ export const translations = {
     testimonials: { label: "شهادات العملاء", title: "يثقون بنا.", prev: "السابق", next: "التالي" },
     about: {
       label: "هويتنا", title: "الاستيراد والتصدير مُعاد ابتكاره.",
-      p1: "الشراء من الخارج ينطوي في أغلب الأحيان على مخاطر. لهذا السبب تأسست Veky-Shop.",
+      p1: "الشراء من الخارج ينطوي في أغلب الأحيان على مخاطر. لهذا السبب تأسست AYA-DIENST.",
       p2: "من مكاتبنا في بيليفيلد، نعمل كفنيك ومفاوضك الخاص على الأراضي الأوروبية.",
       badge1: "بيليفيلد", badge2: "المقر الرئيسي، ألمانيا",
       values: ["حضور مادي في بيليفيلد لفحص البضائع", "تسعير شفاف بدون هامش ربح مخفي", "تنظيم النقل البري والبحري", "جهة اتصال واحدة لجميع إجراءاتك"],
     },
     faq: {
-      label: "الأسئلة الشائعة", title: "أسئلة متكررة.", subtitle: "كل ما تحتاج معرفته قبل بدء مشروعك مع Veky-Shop.",
+      label: "الأسئلة الشائعة", title: "أسئلة متكررة.", subtitle: "كل ما تحتاج معرفته قبل بدء مشروعك مع AYA-DIENST.",
       cta: "طرح سؤال آخر",
       items: [
         { q: "كيف يعمل نظام العمولة لديكم؟", a: "عمولتنا ثابتة ومحددة منذ عرض الأسعار — عادةً بين 5% و10% من سعر الشراء. لا رسوم خفية. تدفع السعر الفعلي + عمولتنا + تكاليف الشحن الموثقة." },
@@ -346,10 +346,10 @@ export const translations = {
     },
     footer: {
       tagline: "التميز الألماني، يُوصّل إليك.",
-      ctaTitle: "هل أنت مستعد للاستيراد؟", ctaSubtitle: "Veky-Shop هو مكتبك التشغيلي في ألمانيا.",
+      ctaTitle: "هل أنت مستعد للاستيراد؟", ctaSubtitle: "AYA-DIENST هو مكتبك التشغيلي في ألمانيا.",
       ctaBtn: "أطلق مشروعاً",
       servicesTitle: "الخدمات", agencyTitle: "الوكالة", helpTitle: "المساعدة",
-      copyright: "Veky-Shop بيليفيلد. لوجستيات راقية.",
+      copyright: "AYA-DIENST بيليفيلد. لوجستيات راقية.",
     },
     whatsapp: { tooltip: "تحدث معنا على واتساب" },
   },
@@ -398,13 +398,13 @@ export const translations = {
     testimonials: { label: "客户评价", title: "他们信任我们。", prev: "上一个", next: "下一个" },
     about: {
       label: "我们的基因", title: "重新定义进出口业务。",
-      p1: "在海外购买往往风险重重，这正是Veky-Shop创立的初衷。",
+      p1: "在海外购买往往风险重重，这正是AYA-DIENST创立的初衷。",
       p2: "我们从比勒费尔德的办公室出发，作为您在欧洲本地的技术专家和谈判代表。",
       badge1: "比勒费尔德", badge2: "总部，德国",
       values: ["实地驻扎比勒费尔德进行货物检验", "透明定价，无隐性利润", "统筹陆运与海运", "一站式单一联络人服务"],
     },
     faq: {
-      label: "常见问题", title: "常见问题解答。", subtitle: "在启动Veky-Shop项目前您需要了解的一切。",
+      label: "常见问题", title: "常见问题解答。", subtitle: "在启动AYA-DIENST项目前您需要了解的一切。",
       cta: "提出其他问题",
       items: [
         { q: "您的佣金机制如何运作？", a: "我们的佣金固定，从报价起即明确告知——通常为采购价的5%至10%。无隐形费用，您支付实际商品价格+佣金+有据可查的运输费。" },
@@ -432,10 +432,10 @@ export const translations = {
     },
     footer: {
       tagline: "德国卓越，送货上门。",
-      ctaTitle: "准备好进口了吗？", ctaSubtitle: "Veky-Shop是您在德国的运营办公室。",
+      ctaTitle: "准备好进口了吗？", ctaSubtitle: "AYA-DIENST是您在德国的运营办公室。",
       ctaBtn: "启动项目",
       servicesTitle: "服务", agencyTitle: "机构", helpTitle: "帮助",
-      copyright: "Veky-Shop 比勒费尔德. 高端物流。",
+      copyright: "AYA-DIENST 比勒费尔德. 高端物流。",
     },
     whatsapp: { tooltip: "通过WhatsApp联系" },
   },

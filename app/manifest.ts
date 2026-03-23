@@ -2,8 +2,8 @@ import { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Veky-Shop | Agents d'Achats Premium en Allemagne",
-    short_name: "Veky-Shop",
+    name: "AYA-DIENST | Agents d'Achats Premium en Allemagne",
+    short_name: "AYA-DIENST",
     description: "Votre bureau opérationnel à Bielefeld. Import-export premium depuis l'Allemagne vers l'Afrique.",
     start_url: "/",
     display: "standalone",

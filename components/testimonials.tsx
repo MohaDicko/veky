@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils"
 import { useLanguage } from "@/lib/i18n/context"
 
 const testimonials = [
-  { name: "Moussa Diallo", role: "Importateur automobile", country: "Sénégal 🇸🇳", initials: "MD", text: "J'ai acheté 3 BMW via Veky-Shop en 6 mois. Chaque fois, rapport d'inspection complet, prix juste, et véhicule livré en parfait état à Dakar. Je ne cherche plus ailleurs.", rating: 5, tag: "Véhicules" },
+  { name: "Moussa Diallo", role: "Importateur automobile", country: "Sénégal 🇸🇳", initials: "MD", text: "J'ai acheté 3 BMW via AYA-DIENST en 6 mois. Chaque fois, rapport d'inspection complet, prix juste, et véhicule livré en parfait état à Dakar. Je ne cherche plus ailleurs.", rating: 5, tag: "Véhicules" },
   { name: "Aminata Koné", role: "Gérante de boutique cosmétique", country: "Côte d'Ivoire 🇨🇮", initials: "AK", text: "Les lots Balea et Eucerin depuis Bielefeld me permettent de vendre 40% moins cher que mes concurrents. Qualité et traçabilité irréprochables, à chaque commande.", rating: 5, tag: "Cosmétiques" },
-  { name: "Ibrahim Sangaré", role: "Mécanicien & Atelier", country: "Mali 🇲🇱", initials: "IS", text: "Les pièces Bosch commandées via Veky-Shop m'arrivent originales, avec facture allemande. Fini les contrefaçons du marché local. Commission transparente et honnête.", rating: 5, tag: "Pièces" },
-  { name: "Fatou Baldé", role: "Commerçante importatrice", country: "Guinée 🇬🇳", initials: "FB", text: "J'avais peur de me faire arnaquer depuis l'Allemagne. Avec Veky-Shop, j'ai les photos, les vidéos, les documents avant même de payer. C'est du sérieux, je recommande.", rating: 5, tag: "Logistique" },
+  { name: "Ibrahim Sangaré", role: "Mécanicien & Atelier", country: "Mali 🇲🇱", initials: "IS", text: "Les pièces Bosch commandées via AYA-DIENST m'arrivent originales, avec facture allemande. Fini les contrefaçons du marché local. Commission transparente et honnête.", rating: 5, tag: "Pièces" },
+  { name: "Fatou Baldé", role: "Commerçante importatrice", country: "Guinée 🇬🇳", initials: "FB", text: "J'avais peur de me faire arnaquer depuis l'Allemagne. Avec AYA-DIENST, j'ai les photos, les vidéos, les documents avant même de payer. C'est du sérieux, je recommande.", rating: 5, tag: "Logistique" },
 ]
 
 export function Testimonials() {

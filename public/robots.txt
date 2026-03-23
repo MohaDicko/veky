@@ -6,4 +6,4 @@ Disallow: /api/
 Disallow: /_next/
 
 # Sitemap
-Sitemap: https://veky-shop.com/sitemap.xml
+Sitemap: https://aya-dienst.com/sitemap.xml

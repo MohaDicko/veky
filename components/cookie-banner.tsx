@@ -9,7 +9,7 @@ export function CookieBanner() {
   const [showDetails, setShowDetails] = useState(false)
 
   useEffect(() => {
-    const consent = localStorage.getItem("vekyshop-cookie-consent")
+    const consent = localStorage.getItem("ayadienst-cookie-consent")
     if (!consent) {
       const timer = setTimeout(() => setVisible(true), 2000)
       return () => clearTimeout(timer)
@@ -17,7 +17,7 @@ export function CookieBanner() {
   }, [])
 
   const accept = (all = true) => {
-    localStorage.setItem("vekyshop-cookie-consent", all ? "all" : "essential")
+    localStorage.setItem("ayadienst-cookie-consent", all ? "all" : "essential")
     setVisible(false)
   }
 

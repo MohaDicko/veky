@@ -26,7 +26,7 @@ export default function LegalPage() {
                 Mentions Légales
               </h2>
               <div className="space-y-4">
-                <p><strong>Éditeur du site :</strong> Veky-Shop Bielefeld</p>
+                <p><strong>Éditeur du site :</strong> AYA-DIENST Bielefeld</p>
                 <p><strong>Siège social :</strong> Bielefeld, Nordrhein-Westfalen, Allemagne</p>
                 <p><strong>Directeur de la publication :</strong> Ousmane Mahamad Toure</p>
                 <p><strong>Contact :</strong> +49 176 2137 4833 | ousmanemahamadtoure@gmail.com</p>
@@ -53,7 +53,7 @@ export default function LegalPage() {
                 Conditions Générales
               </h2>
               <div className="space-y-4">
-                <p>Veky-Shop agit en qualité d'agent d'achat, inspecteur et intermédiaire logistique. Nos responsabilités et commissions sont définies par un contrat établi avant toute transaction financière (généralement entre 5% et 10%).</p>
+                <p>AYA-DIENST agit en qualité d'agent d'achat, inspecteur et intermédiaire logistique. Nos responsabilités et commissions sont définies par un contrat établi avant toute transaction financière (généralement entre 5% et 10%).</p>
                 <p>Nous ne sommes pas un concessionnaire automobile mais un partenaire de sourcing qui garantit la transparence d'achat sur le marché allemand. Les litiges relèvent du droit commercial allemand.</p>
               </div>
             </section>

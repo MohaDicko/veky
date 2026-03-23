@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -53,10 +54,17 @@ export function Header() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
           {/* Logo */}
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5 group flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-transform duration-500">V</div>
+            <Link href="/" className="-m-1.5 p-1.5 group flex items-center gap-3">
+              <div className="relative w-12 h-12 rounded-xl bg-white p-1 overflow-hidden group-hover:rotate-12 transition-transform duration-500 shadow-sm border border-border/10">
+                <Image
+                  src="/logo.png"
+                  alt="AYA-DIENST Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <span className={cn("text-display text-2xl font-bold tracking-tighter transition-colors duration-500", isScrolled ? "text-foreground" : "text-white")}>
-                VEKY<span className="text-primary">-</span>SHOP
+                AYA<span className="text-primary">-</span>DIENST
               </span>
             </Link>
           </div>
@@ -158,9 +166,16 @@ export function Header() {
       <div className={cn("fixed inset-0 z-50 transition-all duration-500 lg:hidden", mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none")}>
         <div className="fixed inset-0 bg-background/97 backdrop-blur-2xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-border">
           <div className="flex items-center justify-between mb-16">
-            <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white font-bold">V</div>
-              <span className="text-display text-2xl font-bold tracking-tighter">VEKY-SHOP</span>
+            <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
+              <div className="relative w-12 h-12 rounded-xl bg-white p-1 overflow-hidden shadow-sm border border-border/10">
+                <Image
+                   src="/logo.png"
+                   alt="AYA-DIENST Logo"
+                   fill
+                   className="object-contain"
+                />
+              </div>
+              <span className="text-display text-2xl font-bold tracking-tighter">AYA-DIENST</span>
             </Link>
             <button type="button" className="-m-2.5 rounded-xl p-2.5 text-foreground" onClick={() => setMobileMenuOpen(false)}>
               <X className="h-8 w-8" />

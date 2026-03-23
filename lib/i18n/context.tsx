@@ -23,12 +23,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const setLang = (newLang: Language) => {
     setLangState(newLang)
     if (typeof window !== "undefined") {
-      localStorage.setItem("vekyshop-lang", newLang)
+      localStorage.setItem("ayadienst-lang", newLang)
     }
   }
 
   useEffect(() => {
-    const stored = localStorage.getItem("vekyshop-lang") as Language | null
+    const stored = localStorage.getItem("ayadienst-lang") as Language | null
     if (stored && LANGUAGES.find((l) => l.code === stored)) {
       setLangState(stored)
     }

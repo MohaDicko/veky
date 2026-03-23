@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://veky-shop.com"
+  const baseUrl = "https://aya-dienst.com"
   const lastModified = new Date()
 
   const routes = [

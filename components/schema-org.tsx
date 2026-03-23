@@ -4,14 +4,14 @@ export default function SchemaOrg() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://veky-shop.com/#organization",
-        "name": "Veky-Shop",
-        "alternateName": "Veky Shop Bielefeld",
+        "@id": "https://aya-dienst.com/#organization",
+        "name": "AYA-DIENST",
+        "alternateName": "AYA-DIENST Bielefeld",
         "description": "Agent d'achats et société de logistique premium basée à Bielefeld, Allemagne. Spécialisée dans l'import-export de véhicules, cosmétiques, pièces détachées et produits Made in Germany vers l'Afrique.",
-        "url": "https://veky-shop.com",
+        "url": "https://aya-dienst.com",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://veky-shop.com/logo.png",
+          "url": "https://aya-dienst.com/logo.png",
           "width": 200,
           "height": 60
         },
@@ -54,9 +54,9 @@ export default function SchemaOrg() {
           "Dédouanement et formalités export"
         ],
         "sameAs": [
-          "https://www.linkedin.com/company/veky-shop",
-          "https://www.facebook.com/vekyshop",
-          "https://www.instagram.com/vekyshop"
+          "https://www.linkedin.com/company/aya-dienst",
+          "https://www.facebook.com/ayadienst",
+          "https://www.instagram.com/ayadienst"
         ],
         "foundingDate": "2019",
         "foundingLocation": {
@@ -66,21 +66,21 @@ export default function SchemaOrg() {
       },
       {
         "@type": "WebSite",
-        "@id": "https://veky-shop.com/#website",
-        "url": "https://veky-shop.com",
-        "name": "Veky-Shop",
+        "@id": "https://aya-dienst.com/#website",
+        "url": "https://aya-dienst.com",
+        "name": "AYA-DIENST",
         "description": "Agent d'achats premium en Allemagne",
-        "publisher": { "@id": "https://veky-shop.com/#organization" },
+        "publisher": { "@id": "https://aya-dienst.com/#organization" },
         "inLanguage": ["fr", "en", "de", "ar", "zh"],
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://veky-shop.com/#contact",
+          "target": "https://aya-dienst.com/#contact",
           "query-input": "required name=search_term_string"
         }
       },
       {
         "@type": "FAQPage",
-        "@id": "https://veky-shop.com/#faq",
+        "@id": "https://aya-dienst.com/#faq",
         "mainEntity": [
           {
             "@type": "Question",

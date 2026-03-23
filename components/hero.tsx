@@ -42,7 +42,7 @@ export function Hero() {
               className="rounded-full px-10 py-7 text-lg border-white/20 text-white hover:bg-white/10 bg-white/5 backdrop-blur-md transition-all">
               {t.hero.cta2}
             </Button>
-            <a href="https://wa.me/4917621374833?text=Bonjour%20Veky-Shop" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/4917621374833?text=Bonjour%20AYA-DIENST" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-full px-8 py-4 text-base border border-green-500/40 text-green-400 hover:bg-green-500/15 bg-green-500/5 backdrop-blur-md transition-all font-semibold">
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> {t.hero.cta3}
             </a>

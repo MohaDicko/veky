@@ -16,10 +16,10 @@ const arabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: '--font-arabic'
 const chinese = Noto_Sans_SC({ subsets: ["latin"], variable: '--font-chinese', weight: ['400', '700'], display: 'swap' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://veky-shop.com'),
+  metadataBase: new URL('https://aya-dienst.com'),
   title: {
-    default: "Veky-Shop | Agents d'Achats Premium en Allemagne",
-    template: "%s | Veky-Shop",
+    default: "AYA-DIENST | Agents d'Achats Premium en Allemagne",
+    template: "%s | AYA-DIENST",
   },
   description: "Votre bureau opérationnel à Bielefeld, Allemagne. Inspection sur place, logistique totale, commission fixe et transparente pour l'import-export vers l'Afrique.",
   keywords: [
@@ -27,19 +27,19 @@ export const metadata: Metadata = {
     "cosmétiques grossiste Allemagne", "transit fret maritime", "sourcing véhicule occasion",
     "export Sénégal Côte d'Ivoire Mali", "logistique import export premium",
   ],
-  authors: [{ name: "Veky-Shop", url: "https://veky-shop.com" }],
-  creator: "Veky-Shop",
-  publisher: "Veky-Shop",
+  authors: [{ name: "AYA-DIENST", url: "https://aya-dienst.com" }],
+  creator: "AYA-DIENST",
+  publisher: "AYA-DIENST",
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
   openGraph: {
-    title: "Veky-Shop | Agents d'Achats Premium en Allemagne",
+    title: "AYA-DIENST | Agents d'Achats Premium en Allemagne",
     description: "Import-export premium depuis Bielefeld. Véhicules, cosmétiques, logistique internationale.",
-    url: "https://veky-shop.com",
-    siteName: "Veky-Shop",
+    url: "https://aya-dienst.com",
+    siteName: "AYA-DIENST",
     locale: "fr_FR",
     alternateLocale: ["en_US", "de_DE", "ar_SA", "zh_CN"],
     type: "website",
@@ -47,23 +47,23 @@ export const metadata: Metadata = {
       url: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200",
       width: 1200,
       height: 630,
-      alt: "Veky-Shop — Agents d'Achats Premium en Allemagne",
+      alt: "AYA-DIENST — Agents d'Achats Premium en Allemagne",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Veky-Shop | Import-Export Premium depuis l'Allemagne",
+    title: "AYA-DIENST | Import-Export Premium depuis l'Allemagne",
     description: "Votre bureau opérationnel à Bielefeld — véhicules, cosmétiques, logistique.",
     images: ["https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200"],
   },
   alternates: {
-    canonical: "https://veky-shop.com",
+    canonical: "https://aya-dienst.com",
     languages: {
-      "fr": "https://veky-shop.com",
-      "en": "https://veky-shop.com/en",
-      "de": "https://veky-shop.com/de",
-      "ar": "https://veky-shop.com/ar",
-      "zh": "https://veky-shop.com/zh",
+      "fr": "https://aya-dienst.com",
+      "en": "https://aya-dienst.com/en",
+      "de": "https://aya-dienst.com/de",
+      "ar": "https://aya-dienst.com/ar",
+      "zh": "https://aya-dienst.com/zh",
     },
   },
   icons: {
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
   },
   verification: {
-    google: "veky-shop-google-verification",
+    google: "aya-dienst-google-verification",
   },
   category: "business",
 }

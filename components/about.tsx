@@ -23,7 +23,7 @@ export function About() {
             <div className="relative aspect-square overflow-hidden rounded-[3rem] border border-border/40 shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=1000"
-                alt="Bureau Veky-Shop à Bielefeld, Allemagne"
+                alt="Bureau AYA-DIENST à Bielefeld, Allemagne"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -50,8 +50,8 @@ export function About() {
 
             <div className="space-y-8 text-muted-foreground text-xl font-light leading-relaxed">
               <p>
-                {t.about.p1.replace("Veky-Shop", "")}
-                <span className="text-foreground font-medium underline decoration-primary/40 underline-offset-8">Veky-Shop</span>.
+                {t.about.p1.replace("AYA-DIENST", "")}
+                <span className="text-foreground font-medium underline decoration-primary/40 underline-offset-8">AYA-DIENST</span>.
               </p>
               <p>{t.about.p2}</p>
             </div>

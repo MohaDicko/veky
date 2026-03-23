@@ -43,7 +43,7 @@ export function Footer() {
   return (
     <footer className="bg-primary text-white pt-32 pb-12 overflow-hidden relative">
       <div className="absolute top-0 right-0 pointer-events-none select-none translate-y-[-20%] translate-x-[10%] opacity-[0.03]" aria-hidden="true">
-        <span className="text-luxury text-[40vw] font-bold leading-none tracking-tighter">VEKY</span>
+        <span className="text-luxury text-[40vw] font-bold leading-none tracking-tighter">AYA</span>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 relative z-10 lg:px-8">
@@ -60,7 +60,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24 mb-32">
           <div className="col-span-2 lg:col-span-1 space-y-10">
             <Link href="/" className="inline-block">
-              <span className="text-luxury text-4xl font-bold tracking-tighter">VEKY<span className="text-accent">-</span>SHOP</span>
+              <span className="text-luxury text-4xl font-bold tracking-tighter">AYA<span className="text-accent">-</span>DIENST</span>
             </Link>
             <div className="space-y-4">
               <p className="text-xl font-light text-white/60">{t.footer.tagline}</p>
