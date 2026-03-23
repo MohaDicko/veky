@@ -26,7 +26,7 @@ export function Calculator() {
     const comm = Math.max(p * commRate, category === 0 ? 500 : 50)
     
     // Shipping Estimates
-    const baseShipping = [1500, 1600, 1800, 1700, 2000] // Rough estimates per destination
+    const baseShipping = [2000, 1500, 1600, 1800, 1700] // Global is first now
     const catMultiplier = category === 0 ? 1 : 0.3 // Vehicles are more expensive to ship
     const ship = baseShipping[destination] * catMultiplier
 

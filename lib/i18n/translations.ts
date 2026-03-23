@@ -64,7 +64,7 @@ export const translations = {
       cta: "Poser une autre question",
       items: [
         { q: "Comment fonctionne votre système de commission ?", a: "Notre commission est fixe et communiquée dès le devis — généralement entre 5% et 10% du prix d'achat. Il n'y a aucun frais caché. Vous payez le prix réel du bien + notre commission + les frais de transport documentés." },
-        { q: "Dans quels pays livrez-vous ?", a: "Nous expédions principalement vers l'Afrique de l'Ouest et du Nord : Sénégal, Côte d'Ivoire, Mali, Guinée, Maroc, Algérie, Cameroun, Togo et plus. Contactez-nous pour votre pays." },
+        { q: "Dans quels pays livrez-vous ?", a: "Nous expédions dans tous les pays du monde sans exception. Bien que nous ayons une expertise forte sur l'Afrique de l'Ouest, notre réseau logistique nous permet de livrer vos achats allemands partout : Europe, Asie, Amériques et l'ensemble du continent africain." },
         { q: "Combien de temps pour recevoir un véhicule ?", a: "Comptez 3 à 6 semaines pour une livraison maritime depuis Bielefeld vers l'Afrique de l'Ouest. Nous vous fournissons un tracking en temps réel." },
         { q: "Comment êtes-vous sûr de trouver le bien exact ?", a: "Nous accédons à Mobile.de, AutoScout24, Zalando Lounge et nos réseaux de grossistes locaux. Nous vous envoyons plusieurs options avec photos/vidéos avant tout engagement." },
         { q: "Est-ce que je peux payer en acompte ?", a: "Oui. Pour les véhicules, nous fonctionnons avec 30-50% d'acompte à la signature et le solde après inspection validée. Pour les cosmétiques, le paiement est en une fois." },
@@ -101,7 +101,7 @@ export const translations = {
       categoryLabel: "Catégorie de produit",
       categories: ["Véhicule d'occasion", "Cosmétiques / Wholesale", "Pièces & Outillage", "Autre"],
       destinationLabel: "Destination (Afrique)",
-      destinations: ["Sénégal (Dakar)", "Côte d'Ivoire (Abidjan)", "Mali (Bamako)", "Guinée (Conakry)", "Autre"],
+      destinations: ["Monde Entier (Global)", "Sénégal (Dakar)", "Côte d'Ivoire (Abidjan)", "Mali (Bamako)", "Guinée (Conakry)"],
       resultTitle: "Estimation du Coût Total",
       commissionLabel: "Commission AYA-DIENST (estimée)",
       shippingLabel: "Frais de logistique (estimés)",
@@ -110,13 +110,13 @@ export const translations = {
       cta: "Obtenir mon devis certifié"
     },
     destinations: {
-      label: "Logistique LocaleAfrique", title: "Où expédions-nous ?",
-      subtitle: "Un réseau maîtrisé pour une livraison sécurisée dans les principaux hubs économiques d'Afrique de l'Ouest.",
+      label: "Logistique Mondiale", title: "Expédiez partout dans le monde.",
+      subtitle: "Un réseau logistique global orchestré depuis l'Allemagne pour livrer vos achats dans n'importe quel pays, sur tous les continents.",
       items: [
+        { country: "Monde Entier", city: "Réseau Global", time: "Variable", safety: "Certifié", flag: "🌍" },
         { country: "Sénégal", city: "Dakar (Port Autonome)", time: "15-20 Jours", safety: "Sécurisé", flag: "🇸🇳" },
         { country: "Côte d'Ivoire", city: "Abidjan (Vridi)", time: "18-25 Jours", safety: "Premium", flag: "🇨🇮" },
-        { country: "Mali", city: "Bamako (Hub Terrestre)", time: "25-30 Jours", safety: "Suivi Total", flag: "🇲🇱" },
-        { country: "Guinée", city: "Conakry (Port)", time: "20-22 Jours", safety: "Fiable", flag: "🇬🇳" }
+        { country: "Mali", city: "Bamako (Hub Terrestre)", time: "25-30 Jours", safety: "Suivi Total", flag: "🇲🇱" }
       ]
     },
   },
@@ -175,7 +175,7 @@ export const translations = {
       cta: "Ask another question",
       items: [
         { q: "How does your commission system work?", a: "Our commission is fixed and communicated from the first quote — generally between 5% and 10% of the purchase price. No hidden fees. You pay the actual price + our commission + documented shipping costs." },
-        { q: "Which countries do you ship to?", a: "We mainly ship to West and North Africa: Senegal, Côte d'Ivoire, Mali, Guinea, Morocco, Algeria, Cameroon, Togo and more. Contact us to check your country." },
+        { q: "Which countries do you ship to?", a: "We ship to every country in the world without exception. While we have strong expertise in West Africa, our logistics network allows us to deliver your German purchases anywhere: Europe, Asia, the Americas, and the entire African continent." },
         { q: "How long does it take to receive a vehicle?", a: "Allow 3 to 6 weeks for sea freight from Bielefeld to West Africa. We provide real-time tracking throughout the journey." },
         { q: "How can you be sure to find the exact item I need?", a: "We have access to Mobile.de, AutoScout24, Zalando Lounge and our local wholesaler networks. We send you multiple options with photos/videos before any commitment." },
         { q: "Can I pay a deposit?", a: "Yes. For vehicles, we typically work with a 30-50% deposit at signing and the balance after your inspection approval. For cosmetics, payment is usually in full." },
@@ -212,7 +212,7 @@ export const translations = {
       categoryLabel: "Product Category",
       categories: ["Used Vehicle", "Cosmetics / Wholesale", "Parts & Tools", "Other"],
       destinationLabel: "Destination (Africa)",
-      destinations: ["Senegal (Dakar)", "Ivory Coast (Abidjan)", "Mali (Bamako)", "Guinea (Conakry)", "Other"],
+      destinations: ["Worldwide (Global)", "Senegal (Dakar)", "Ivory Coast (Abidjan)", "Mali (Bamako)", "Guinea (Conakry)"],
       resultTitle: "Estimated Total Cost",
       commissionLabel: "AYA-DIENST Commission (estimated)",
       shippingLabel: "Logistics Fees (estimated)",
@@ -221,13 +221,13 @@ export const translations = {
       cta: "Get my certified quote"
     },
     destinations: {
-      label: "Local Logistics Africa", title: "Where do we ship?",
-      subtitle: "A mastered network for secure delivery to the main economic hubs of West Africa.",
+      label: "Global Logistics", title: "Ship anywhere in the world.",
+      subtitle: "A global logistics network orchestrated from Germany to deliver your purchases to any country, across all continents.",
       items: [
+        { country: "Worldwide", city: "Global Network", time: "Variable", safety: "Certified", flag: "🌍" },
         { country: "Senegal", city: "Dakar (Autonomous Port)", time: "15-20 Days", safety: "Secured", flag: "🇸🇳" },
         { country: "Ivory Coast", city: "Abidjan (Vridi)", time: "18-25 Days", safety: "Premium", flag: "🇨🇮" },
-        { country: "Mali", city: "Bamako (Land Hub)", time: "25-30 Days", safety: "Total Tracking", flag: "🇲🇱" },
-        { country: "Guinea", city: "Conakry (Port)", time: "20-22 Days", safety: "Reliable", flag: "🇬🇳" }
+        { country: "Mali", city: "Bamako (Land Hub)", time: "25-30 Days", safety: "Total Tracking", flag: "🇲🇱" }
       ]
     },
   },
@@ -286,7 +286,7 @@ export const translations = {
       cta: "Weitere Frage stellen",
       items: [
         { q: "Wie funktioniert Ihr Provisionsystem?", a: "Unsere Provision ist fest und wird im Angebot kommuniziert — in der Regel zwischen 5% und 10% des Kaufpreises. Keine versteckten Gebühren. Sie zahlen den tatsächlichen Preis + Provision + dokumentierte Versandkosten." },
-        { q: "In welche Länder liefern Sie?", a: "Wir liefern hauptsächlich nach West- und Nordafrika: Senegal, Côte d'Ivoire, Mali, Guinea, Marokko, Algerien, Kamerun, Togo und mehr." },
+        { q: "In welche Länder liefern Sie?", a: "Wir liefern in alle Länder der Welt ohne Ausnahme. Obwohl wir über eine starke Expertise in Westafrika verfügen, ermöglicht uns unser Logistiknetzwerk, Ihre deutschen Einkäufe überallhin zu liefern: Europa, Asien, Amerika und auf den gesamten afrikanischen Kontinent." },
         { q: "Wie lange dauert es, ein Fahrzeug zu erhalten?", a: "Rechnen Sie mit 3 bis 6 Wochen für Seefracht von Bielefeld nach Westafrika. Wir stellen Ihnen ein Echtzeit-Tracking zur Verfügung." },
         { q: "Wie sicher sind Sie, den gewünschten Artikel zu finden?", a: "Wir haben Zugang zu Mobile.de, AutoScout24, Zalando Lounge und unseren lokalen Großhändler-Netzwerken. Wir senden Ihnen mehrere Optionen mit Fotos/Videos vor jeder Verpflichtung." },
         { q: "Kann ich eine Anzahlung leisten?", a: "Ja. Bei Fahrzeugen arbeiten wir mit 30–50% Anzahlung bei Unterzeichnung und dem Restbetrag nach Ihrer Inspektionsgenehmigung." },
@@ -322,8 +322,8 @@ export const translations = {
       priceLabel: "Preis der Ware in Deutschland (€)",
       categoryLabel: "Produktkategorie",
       categories: ["Gebrauchtfahrzeug", "Kosmetik / Großhandel", "Teile & Werkzeug", "Sonstiges"],
-      destinationLabel: "Bestimmungsort (Afrika)",
-      destinations: ["Senegal (Dakar)", "Elfenbeinküste (Abidjan)", "Mali (Bamako)", "Guinea (Conakry)", "Sonstiges"],
+      destinationLabel: "Bestimmungsort (Weltweit)",
+      destinations: ["Weltweit (Global)", "Senegal (Dakar)", "Elfenbeinküste (Abidjan)", "Mali (Bamako)", "Guinea (Conakry)"],
       resultTitle: "Geschätzte Gesamtkosten",
       commissionLabel: "AYA-DIENST Provision (geschätzt)",
       shippingLabel: "Logistikkosten (geschätzt)",
@@ -332,13 +332,13 @@ export const translations = {
       cta: "Zertifiziertes Angebot anfordern"
     },
     destinations: {
-      label: "Lokale Logistik Afrika", title: "Wohin versenden wir?",
-      subtitle: "Ein bewährtes Netzwerk für die sichere Lieferung in die wichtigsten Wirtschaftszentren Westafrikas.",
+      label: "Globale Logistik", title: "Versand weltweit.",
+      subtitle: "Ein globales Logistiknetzwerk, das von Deutschland aus gesteuert wird, um Ihre Einkäufe in jedes Land auf allen Kontinenten zu liefern.",
       items: [
+        { country: "Weltweit", city: "Globales Netzwerk", time: "Variabel", safety: "Zertifiziert", flag: "🌍" },
         { country: "Senegal", city: "Dakar (Port Autonome)", time: "15-20 Tage", safety: "Gesichert", flag: "🇸🇳" },
         { country: "Elfenbeinküste", city: "Abidjan (Vridi)", time: "18-25 Tage", safety: "Premium", flag: "🇨🇮" },
-        { country: "Mali", city: "Bamako (Hub Terrestre)", time: "25-30 Tage", safety: "Vollständiges Tracking", flag: "🇲🇱" },
-        { country: "Guinea", city: "Conakry (Port)", time: "20-22 Tage", safety: "Zuverlässig", flag: "🇬🇳" }
+        { country: "Mali", city: "Bamako (Hub Terrestre)", time: "25-30 Tage", safety: "Vollständiges Tracking", flag: "🇲🇱" }
       ]
     },
   },
@@ -397,7 +397,7 @@ export const translations = {
       cta: "طرح سؤال آخر",
       items: [
         { q: "كيف يعمل نظام العمولة لديكم؟", a: "عمولتنا ثابتة ومحددة منذ عرض الأسعار — عادةً بين 5% و10% من سعر الشراء. لا رسوم خفية. تدفع السعر الفعلي + عمولتنا + تكاليف الشحن الموثقة." },
-        { q: "إلى أي دول تقومون بالشحن؟", a: "نشحن بشكل رئيسي إلى غرب وشمال أفريقيا: السنغال، كوت ديفوار، مالي، غينيا، المغرب، الجزائر، الكاميرون، توغو والمزيد." },
+        { q: "إلى أي دول تقومون بالشحن؟", a: "نشحن إلى جميع دول العالم دون استثناء. على الرغم من خبرتنا القوية في غرب إفريقيا، إلا أن شبكتنا اللوجستية تسمح لنا بتوصيل مشترياتك الألمانية إلى أي مكان: أوروبا وآسيا والأمريكتين وكامل القارة الأفريقية." },
         { q: "كم يستغرق استلام السيارة؟", a: "اعتمد على 3 إلى 6 أسابيع للشحن البحري من بيليفيلد إلى غرب أفريقيا. نوفر تتبعاً في الوقت الفعلي." },
         { q: "كيف تضمنون إيجاد المنتج المطلوب بالضبط؟", a: "لدينا إمكانية الوصول إلى Mobile.de وAutoScout24 وZalando Lounge وشبكات تجار الجملة المحلية. نرسل لك خيارات متعددة مع صور/فيديوهات قبل أي التزام." },
         { q: "هل يمكنني الدفع بالأقساط؟", a: "نعم. بالنسبة للسيارات، نعمل عادةً بدفعة أولى 30-50% عند التوقيع والباقي بعد موافقتك على الفحص." },
@@ -433,8 +433,8 @@ export const translations = {
       priceLabel: "سعر السلعة في ألمانيا (€)",
       categoryLabel: "فئة المنتج",
       categories: ["سيارة مستعملة", "مستحضرات تجميل / جملة", "قطع غيار وأدوات", "أخرى"],
-      destinationLabel: "الوجهة (أفريقيا)",
-      destinations: ["السنغال (داكار)", "ساحل العاج (أبيدجان)", "مالي (باماكو)", "غينيا (كوناكري)", "أخرى"],
+      destinationLabel: "الوجهة (عالمياً)",
+      destinations: ["حول العالم (عالمي)", "السنغال (داكار)", "ساحل العاج (أبيدجان)", "مالي (باماكو)", "غينيا (كوناكري)"],
       resultTitle: "التكلفة الإجمالية التقديرية",
       commissionLabel: "عمولة AYA-DIENST (تقديرية)",
       shippingLabel: "رسوم اللوجستيات (تقديرية)",
@@ -443,13 +443,13 @@ export const translations = {
       cta: "احصل على عرض سعري المعتمد"
     },
     destinations: {
-      label: "الخدمات اللوجستية المحلية في أفريقيا", title: "أين نشحن؟",
-      subtitle: "شبكة متقنة للتوصيل الآمن إلى المراكز الاقتصادية الرئيسية في غرب أفريقيا.",
+      label: "اللوجستيات العالمية", title: "اشحن إلى أي مكان في العالم.",
+      subtitle: "شبكة لوجستية عالمية تُدار من ألمانيا لتوصيل مشترياتك إلى أي بلد عبر جميع القارات.",
       items: [
+        { country: "حول العالم", city: "شبكة عالمية", time: "متغير", safety: "معتمد", flag: "🌍" },
         { country: "السنغال", city: "داكار (الميناء المستقل)", time: "15-20 يوم", safety: "مؤمن", flag: "🇸🇳" },
         { country: "ساحل العاج", city: "أبيدجان (فريدي)", time: "18-25 يوم", safety: "ممتاز", flag: "🇨🇮" },
-        { country: "مالي", city: "باماكو (مركز بري)", time: "25-30 يوم", safety: "تتبع كامل", flag: "🇲🇱" },
-        { country: "غينيا", city: "كوناكري (الميناء)", time: "20-22 يوم", safety: "موثوق", flag: "🇬🇳" }
+        { country: "مالي", city: "باماكو (مركز بري)", time: "25-30 يوم", safety: "تتبع كامل", flag: "🇲🇱" }
       ]
     },
   },
@@ -508,7 +508,7 @@ export const translations = {
       cta: "提出其他问题",
       items: [
         { q: "您的佣金机制如何运作？", a: "我们的佣金固定，从报价起即明确告知——通常为采购价的5%至10%。无隐形费用，您支付实际商品价格+佣金+有据可查的运输费。" },
-        { q: "您向哪些国家发货？", a: "我们主要向西非和北非发货：塞内加尔、科特迪瓦、马里、几内亚、摩洛哥、阿尔及利亚、喀麦隆、多哥等。" },
+        { q: "您向哪些国家发货？", a: "我们向全球所有国家发货，无一例外。虽然我们在西非拥有深厚的专业知识，但我们的物流网络允许我们将您在德国购买的商品送达任何地方：欧洲、亚洲、美洲以及整个非洲大陆。" },
         { q: "收到车辆需要多长时间？", a: "从比勒费尔德海运至西非约需3至6周，我们全程提供实时追踪。" },
         { q: "如何保证找到我需要的商品？", a: "我们可访问Mobile.de、AutoScout24、Zalando Lounge及本地批发商网络，在承诺前提供配图/视频的多个选项供您选择。" },
         { q: "我可以支付定金吗？", a: "可以。对于车辆，我们通常在签约时收取30-50%定金，在您确认检验后支付尾款。" },
@@ -544,8 +544,8 @@ export const translations = {
       priceLabel: "德国商品价格 (€)",
       categoryLabel: "产品类别",
       categories: ["二手车", "化妆品 / 批发", "零件与工具", "其他"],
-      destinationLabel: "目的地 (非洲)",
-      destinations: ["塞内加尔 (达喀尔)", "科特迪瓦 (阿比让)", "马里 (巴马科)", "几内亚 (科纳克里)", "其他"],
+      destinationLabel: "目的地 (全球)",
+      destinations: ["全球范围 (Global)", "塞内加尔 (达喀尔)", "科特迪瓦 (阿比让)", "马里 (巴马科)", "几内亚 (科纳克里)"],
       resultTitle: "预计总成本",
       commissionLabel: "AYA-DIENST 佣金 (预估)",
       shippingLabel: "物流费用 (预估)",
@@ -554,13 +554,13 @@ export const translations = {
       cta: "获取我的认证报价"
     },
     destinations: {
-      label: "非洲本地物流", title: "我们的发货目的地？",
-      subtitle: "成熟的网络，确保安全运达西非主要经济枢纽。",
+      label: "全球物流", title: "发货至世界各地。",
+      subtitle: "建立在德国的全球物流网络，将您的采购商品运送至各大洲的任何国家。",
       items: [
+        { country: "全球", city: "全球网络", time: "视情况而定", safety: "认证", flag: "🌍" },
         { country: "塞内加尔", city: "达喀尔 (自治港)", time: "15-20 天", safety: "安全保障", flag: "🇸🇳" },
         { country: "科特迪瓦", city: "阿比让 (弗里迪)", time: "18-25 天", safety: "优质服务", flag: "🇨🇮" },
-        { country: "马里", city: "巴马科 (陆运枢纽)", time: "25-30 天", safety: "全程追踪", flag: "🇲🇱" },
-        { country: "几内亚", city: "科纳克里 (港口)", time: "20-22 天", safety: "可靠", flag: "🇬🇳" }
+        { country: "马里", city: "巴马科 (陆运枢纽)", time: "25-30 天", safety: "全程追踪", flag: "🇲🇱" }
       ]
     },
   },

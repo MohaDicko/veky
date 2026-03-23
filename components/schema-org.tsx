@@ -43,7 +43,7 @@ export default function SchemaOrg() {
         "currenciesAccepted": "EUR",
         "paymentAccepted": "Bank Transfer, Wire Transfer",
         "areaServed": [
-          "Sénégal", "Côte d'Ivoire", "Mali", "Guinée", "Maroc",
+          "Monde Entier", "Sénégal", "Côte d'Ivoire", "Mali", "Guinée", "Maroc",
           "Algérie", "Cameroun", "Togo", "Allemagne"
         ],
         "serviceType": [

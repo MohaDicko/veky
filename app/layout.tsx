@@ -18,14 +18,14 @@ const chinese = Noto_Sans_SC({ subsets: ["latin"], variable: '--font-chinese', w
 export const metadata: Metadata = {
   metadataBase: new URL('https://aya-dienst.com'),
   title: {
-    default: "AYA-DIENST | Agents d'Achats Premium en Allemagne",
+    default: "AYA-DIENST | Sourcing & Logistique Mondiale depuis l'Allemagne",
     template: "%s | AYA-DIENST",
   },
-  description: "Votre bureau opérationnel à Bielefeld, Allemagne. Inspection sur place, logistique totale, commission fixe et transparente pour l'import-export vers l'Afrique.",
+  description: "Votre agent d'achat premium en Allemagne. Nous inspectons et expédions véhicules, cosmétiques et pièces détachées dans le monde entier (Afrique, Europe, Asie, Amériques).",
   keywords: [
-    "import Allemagne Afrique", "achat voiture Allemagne", "agent achat Bielefeld",
-    "cosmétiques grossiste Allemagne", "transit fret maritime", "sourcing véhicule occasion",
-    "export Sénégal Côte d'Ivoire Mali", "logistique import export premium",
+    "import Allemagne Monde", "achat voiture Allemagne export", "agent achat Bielefeld",
+    "cosmétiques grossiste Allemagne", "transit fret mondial", "sourcing véhicule occasion",
+    "export Afrique Europe Asie Amérique", "logistique import export premium",
   ],
   authors: [{ name: "AYA-DIENST", url: "https://aya-dienst.com" }],
   creator: "AYA-DIENST",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
   openGraph: {
-    title: "AYA-DIENST | Agents d'Achats Premium en Allemagne",
-    description: "Import-export premium depuis Bielefeld. Véhicules, cosmétiques, logistique internationale.",
+    title: "AYA-DIENST | Sourcing & Logistique Mondiale",
+    description: "Import-export premium depuis Bielefeld vers le monde entier. Véhicules, cosmétiques, transit international.",
     url: "https://aya-dienst.com",
     siteName: "AYA-DIENST",
     locale: "fr_FR",
