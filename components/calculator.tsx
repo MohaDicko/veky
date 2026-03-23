@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useLanguage } from "@/lib/i18n/context"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Calculator as CalcIcon, Ship, ShieldCheck, ArrowRight, Euro, Globe } from "lucide-react"
+import { Calculator as CalcIcon, Ship, ShieldCheck, ArrowRight, Wallet, Globe } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function Calculator() {
@@ -15,19 +15,20 @@ export function Calculator() {
   const [results, setResults] = useState({ commission: 0, shipping: 0, total: 0 })
 
   useEffect(() => {
-    const p = parseFloat(price) || 0
+    // Treat the input string directly as FCFA
+    const p = parseFloat(price.replace(/\s/g, "")) || 0
     if (p <= 0) {
       setResults({ commission: 0, shipping: 0, total: 0 })
       return
     }
 
-    // Calculation Logic (Estimates)
+    // Calculation Logic (Estimates in FCFA)
     const commRate = category === 0 ? 0.08 : 0.06 // 8% for vehicles, 6% others
-    const comm = Math.max(p * commRate, category === 0 ? 500 : 50)
+    const comm = Math.max(p * commRate, category === 0 ? 325000 : 35000)
     
-    // Shipping Estimates
-    const baseShipping = [2000, 1500, 1600, 1800, 1700] // Global is first now
-    const catMultiplier = category === 0 ? 1 : 0.3 // Vehicles are more expensive to ship
+    // Shipping Estimates (in FCFA)
+    const baseShipping = [1300000, 800000, 850000, 1400000, 850000] // Mali, Sénégal, CI, Niger, Guinée
+    const catMultiplier = category === 0 ? 1 : 0.1 // Vehicles are 100%, others are roughly 10% of vehicle shipping cost or less
     const ship = baseShipping[destination] * catMultiplier
 
     setResults({
@@ -64,17 +65,17 @@ export function Calculator() {
             <div className="space-y-6">
               <div className="space-y-3">
                 <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary flex items-center gap-2">
-                  <Euro className="h-3 w-3" /> {t.calculator.priceLabel}
+                  <Wallet className="h-3 w-3" /> {t.calculator.priceLabel}
                 </label>
                 <div className="relative">
                     <Input 
                         type="number" 
-                        placeholder="15000" 
-                        className="rounded-2xl border-border/40 bg-background/50 h-16 text-2xl font-bold px-6 focus:ring-primary/20"
+                        placeholder="Ex: 8000000" 
+                        className="rounded-2xl border-border/40 bg-background/50 h-16 text-xl sm:text-2xl font-bold px-6 focus:ring-primary/20 pr-16"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                     />
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2 text-muted-foreground font-bold">€</div>
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground text-sm font-bold opacity-70">FCFA</div>
                 </div>
               </div>
 
@@ -82,15 +83,15 @@ export function Calculator() {
                 <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary flex items-center gap-2">
                   <CalcIcon className="h-3 w-3" /> {t.calculator.categoryLabel}
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   {t.calculator.categories.map((cat, i) => (
                     <button
                       key={i}
                       onClick={() => setCategory(i)}
                       className={cn(
-                        "p-4 rounded-2xl text-[10px] font-bold uppercase tracking-wider transition-all border",
+                        "p-4 rounded-2xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all border",
                         category === i 
-                          ? "bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-105" 
+                          ? "bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-[1.02]" 
                           : "bg-background/40 text-muted-foreground border-border/40 hover:bg-background/60"
                       )}
                     >
@@ -104,20 +105,20 @@ export function Calculator() {
                 <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary flex items-center gap-2">
                   <Globe className="h-3 w-3" /> {t.calculator.destinationLabel}
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                    {t.calculator.destinations.map((dest, i) => (
                     <button
                       key={i}
                       onClick={() => setDestination(i)}
                       className={cn(
-                        "p-4 rounded-2xl text-[10px] font-bold uppercase tracking-wider transition-all border text-left flex items-center justify-between",
+                        "p-4 rounded-2xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all border text-left flex items-center justify-between",
                         destination === i 
-                          ? "bg-primary text-white border-primary shadow-lg shadow-primary/20" 
+                          ? "bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-[1.02]" 
                           : "bg-background/40 text-muted-foreground border-border/40 hover:bg-background/60"
                       )}
                     >
                       {dest}
-                      {destination === i && <ShieldCheck className="h-4 w-4" />}
+                      {destination === i && <ShieldCheck className="h-4 w-4 shrink-0 ms-2" />}
                     </button>
                   ))}
                 </div>
@@ -132,21 +133,22 @@ export function Calculator() {
               <h3 className="text-luxury text-2xl font-bold mb-10 opacity-70 border-b border-background/10 pb-6">{t.calculator.resultTitle}</h3>
               
               <div className="space-y-8">
-                <div className="flex justify-between items-end">
-                    <span className="text-sm font-light opacity-60 flex items-center gap-2"><ArrowRight className="h-4 w-4 text-primary" /> {t.calculator.commissionLabel}</span>
-                    <span className="text-2xl font-bold">{results.commission.toLocaleString()} €</span>
+                <div className="flex justify-between items-end gap-2">
+                    <span className="text-sm font-light opacity-60 flex items-center gap-2"><ArrowRight className="h-4 w-4 text-primary shrink-0" /> {t.calculator.commissionLabel}</span>
+                    <span className="text-xl sm:text-2xl font-bold whitespace-nowrap">{results.commission.toLocaleString()} FCFA</span>
                 </div>
-                <div className="flex justify-between items-end">
-                    <span className="text-sm font-light opacity-60 flex items-center gap-2"><Ship className="h-4 w-4 text-primary" /> {t.calculator.shippingLabel}</span>
-                    <span className="text-2xl font-bold">{results.shipping.toLocaleString()} €</span>
+                <div className="flex justify-between items-end gap-2">
+                    <span className="text-sm font-light opacity-60 flex items-center gap-2"><Ship className="h-4 w-4 text-primary shrink-0" /> {t.calculator.shippingLabel}</span>
+                    <span className="text-xl sm:text-2xl font-bold whitespace-nowrap">{results.shipping.toLocaleString()} FCFA</span>
                 </div>
                 
                 <div className="pt-8 border-t border-background/20 mt-10">
-                    <div className="flex justify-between items-center bg-background/5 p-6 rounded-[2rem]">
-                        <span className="text-lg font-bold uppercase tracking-widest">{t.calculator.totalLabel}</span>
-                        <div className="text-right">
-                            <span className="block text-4xl sm:text-5xl font-black text-primary drop-shadow-[0_0_15px_rgba(30,58,138,0.3)]">{results.total.toLocaleString()} €</span>
-                        </div>
+                    <div className="flex flex-col gap-2 bg-background/5 p-6 rounded-[2rem]">
+                        <span className="text-sm font-bold uppercase tracking-widest">{t.calculator.totalLabel}</span>
+                        <span className="block text-3xl sm:text-4xl lg:text-5xl font-black text-primary drop-shadow-[0_0_15px_rgba(30,58,138,0.3)] truncate" title={results.total.toLocaleString() + " FCFA"}>
+                            {results.total.toLocaleString()}
+                        </span>
+                        <span className="text-sm font-bold text-primary ml-1">FCFA</span>
                     </div>
                 </div>
               </div>
@@ -156,7 +158,7 @@ export function Calculator() {
                {t.calculator.disclaimer}
             </p>
 
-            <Button size="lg" className="w-full rounded-[2.5rem] h-20 text-xl font-bold group shadow-2xl hover:scale-[1.02] transition-all" onClick={() => scrollTo("contact")}>
+            <Button size="lg" className="w-full rounded-[2.5rem] h-20 text-lg sm:text-xl font-bold group shadow-2xl hover:scale-[1.02] transition-all" onClick={() => scrollTo("contact")}>
               {t.calculator.cta} <ArrowRight className="ms-3 h-6 w-6 group-hover:translate-x-2 transition-transform" />
             </Button>
           </div>

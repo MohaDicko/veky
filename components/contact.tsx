@@ -15,8 +15,8 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = `Nouvelle demande de devis : ${formData.service || "Service Général"}`
-    const body = `Prénom : ${formData.firstName}\nNom : ${formData.lastName}\nEmail : ${formData.email}\nTéléphone : ${formData.phone}\nService : ${formData.service}\n\n${formData.message}`
+    const subject = `Nouvelle demande d'import : ${formData.email || "Général"}`
+    const body = `Contact : ${formData.firstName}\nVille : ${formData.lastName}\nCatégorie : ${formData.email}\nWhatsApp : ${formData.phone}\nBudget : ${formData.service}\n\nCritères & Année : ${formData.message}`
     window.location.href = `mailto:ousmanemahamadtoure@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     toast.success(t.contact.toastTitle, { description: t.contact.toastDesc })
     setFormData({ firstName: "", lastName: "", email: "", phone: "", service: "", message: "" })
@@ -109,21 +109,21 @@ export function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary ms-1">{t.contact.firstName}</label>
-                    <Input placeholder="Jean" className="rounded-2xl border-border/40 bg-background/50 h-14" value={formData.firstName} onChange={(e) => update("firstName", e.target.value)} required />
+                    <Input placeholder="Jean Diop" className="rounded-2xl border-border/40 bg-background/50 h-14" value={formData.firstName} onChange={(e) => update("firstName", e.target.value)} required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary ms-1">{t.contact.lastName}</label>
-                    <Input placeholder="Dupont" className="rounded-2xl border-border/40 bg-background/50 h-14" value={formData.lastName} onChange={(e) => update("lastName", e.target.value)} required />
+                    <Input placeholder="Bamako" className="rounded-2xl border-border/40 bg-background/50 h-14" value={formData.lastName} onChange={(e) => update("lastName", e.target.value)} required />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary ms-1">{t.contact.email}</label>
-                    <Input type="email" placeholder="contact@exemple.com" className="rounded-2xl border-border/40 bg-background/50 h-14" value={formData.email} onChange={(e) => update("email", e.target.value)} required />
+                    <Input type="text" placeholder="Mercedes Classe C" className="rounded-2xl border-border/40 bg-background/50 h-14" value={formData.email} onChange={(e) => update("email", e.target.value)} required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary ms-1">{t.contact.phone}</label>
-                    <Input type="tel" placeholder="+221 77 000 0000" className="rounded-2xl border-border/40 bg-background/50 h-14" value={formData.phone} onChange={(e) => update("phone", e.target.value)} />
+                    <Input type="tel" placeholder="+223 70 00 00 00" className="rounded-2xl border-border/40 bg-background/50 h-14" value={formData.phone} onChange={(e) => update("phone", e.target.value)} required />
                   </div>
                 </div>
                 <div className="space-y-2">

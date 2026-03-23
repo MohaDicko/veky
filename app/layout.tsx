@@ -18,14 +18,14 @@ const chinese = Noto_Sans_SC({ subsets: ["latin"], variable: '--font-chinese', w
 export const metadata: Metadata = {
   metadataBase: new URL('https://aya-dienst.com'),
   title: {
-    default: "AYA-DIENST | Sourcing & Logistique Mondiale depuis l'Allemagne",
+    default: "AYA-DIENST | Expert Import Auto, Pièces & Cosmétiques d'Allemagne vers le Mali",
     template: "%s | AYA-DIENST",
   },
-  description: "Votre agent d'achat premium en Allemagne. Nous inspectons et expédions véhicules, cosmétiques et pièces détachées dans le monde entier (Afrique, Europe, Asie, Amériques).",
+  description: "Votre acheteur de confiance en Allemagne. Gagnez du temps et de l'argent : nous inspectons, achetons et livrons vos véhicules, pièces détachées et lots cosmétiques jusqu'à Bamako.",
   keywords: [
-    "import Allemagne Monde", "achat voiture Allemagne export", "agent achat Bielefeld",
-    "cosmétiques grossiste Allemagne", "transit fret mondial", "sourcing véhicule occasion",
-    "export Afrique Europe Asie Amérique", "logistique import export premium",
+    "import auto allemagne mali", "voiture occasion allemagne bamako", "agent sourcing bielefeld",
+    "grossiste cosmétique balea eucerin dakar mali", "import pièces détachées allemagne", "dédouanement voiture mali",
+    "export afrique de l'ouest", "logistique auto premium",
   ],
   authors: [{ name: "AYA-DIENST", url: "https://aya-dienst.com" }],
   creator: "AYA-DIENST",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
   openGraph: {
-    title: "AYA-DIENST | Sourcing & Logistique Mondiale",
-    description: "Import-export premium depuis Bielefeld vers le monde entier. Véhicules, cosmétiques, transit international.",
+    title: "AYA-DIENST | Import Auto, Pièces & Cosmétiques Allemagne",
+    description: "La sécurité allemande jusqu'au Mali. Découvrez le catalogue d'importation de véhicules et produits premium.",
     url: "https://aya-dienst.com",
     siteName: "AYA-DIENST",
     locale: "fr_FR",
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AYA-DIENST | Import-Export Premium depuis l'Allemagne",
-    description: "Votre bureau opérationnel à Bielefeld — véhicules, cosmétiques, logistique.",
-    images: ["https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200"],
+    title: "AYA-DIENST | L'Import d'Allemagne sur-mesure",
+    description: "Votre bureau sur le terrain à Bielefeld — auto, composants, déstockages cosmétiques, et logistique Afrique.",
+    images: ["https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1200"],
   },
   alternates: {
     canonical: "https://aya-dienst.com",

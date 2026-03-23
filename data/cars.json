@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "title": "Mercedes Classe C 2021",
+    "pricePort": "11 000 000 FCFA",
+    "priceCountry": "12 100 000 FCFA",
+    "fuel": "Essence",
+    "mileage": "65 000 km",
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=800",
+    "desc": "État impeccable, certifié Allemagne."
+  },
+  {
+    "id": "2",
+    "title": "Toyota RAV4 Hybride",
+    "pricePort": "13 500 000 FCFA",
+    "priceCountry": "14 400 000 FCFA",
+    "fuel": "Hybride",
+    "mileage": "40 000 km",
+    "image": "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fd?q=80&w=800",
+    "desc": "Le roi des SUV, économique et robuste."
+  },
+  {
+    "id": "3",
+    "title": "BMW Série 5",
+    "pricePort": "15 500 000 FCFA",
+    "priceCountry": "16 500 000 FCFA",
+    "fuel": "Diesel",
+    "mileage": "50 000 km",
+    "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=800",
+    "desc": "Luxe et puissance. Contrôle technique complet."
+  }
+]

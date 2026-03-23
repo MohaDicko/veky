@@ -1,0 +1,81 @@
+[
+  {
+    "id": "car_1701000000",
+    "type": "car",
+    "title": "Mercedes-Benz Classe C 220d AMG Line",
+    "pricePort": "18 500 000 FCFA",
+    "priceCountry": "22 100 000 FCFA",
+    "spec1": "Diesel",
+    "spec2": "45 000 km",
+    "spec3": "2021",
+    "spec4": "Automatique 9G-Tronic",
+    "spec5": "Noir Obsidienne Métallisé",
+    "spec6": "2.0L - 200 ch",
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1200",
+    "images": [
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1200",
+      "https://images.unsplash.com/photo-1605559424843-9e1160ed8aeb?q=80&w=1200",
+      "https://images.unsplash.com/photo-1621244249240-02bd0ce73ced?q=80&w=1200"
+    ],
+    "desc": "Véhicule première main, inspection certifiée réseau Mercedes en Allemagne. Pack AMG Line intérieur et extérieur avec volant cuir sport. Toit panoramique et sièges chauffants. Très faible consommation sur longue distance."
+  },
+  {
+    "id": "car_1701000001",
+    "type": "car",
+    "title": "Toyota RAV4 2.5 HSD AWD Lounge",
+    "pricePort": "16 200 000 FCFA",
+    "priceCountry": "19 500 000 FCFA",
+    "spec1": "Hybride (Ess/Élec)",
+    "spec2": "68 000 km",
+    "spec3": "2020",
+    "spec4": "e-CVT",
+    "spec5": "Blanc Nacré",
+    "spec6": "2.5L - 222 ch (4x4)",
+    "image": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1200",
+    "images": [
+      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1200",
+      "https://images.unsplash.com/photo-1626359332501-c9676579ab0e?q=80&w=1200",
+      "https://images.unsplash.com/photo-1594203525281-aacec79fa26c?q=80&w=1200"
+    ],
+    "desc": "Le roi indétrônable des pistes africaines et de la ville. Consommation ridicule grâce au système hybride Toyota. Châssis très robuste et garde au sol élevée, idéal pour les routes de brousse ou la saison des pluies. Révisé complet avant départ."
+  },
+  {
+    "id": "part_1701000002",
+    "type": "part",
+    "title": "Moteur Complet V8 Turbo Diesel",
+    "pricePort": "3 500 000 FCFA",
+    "priceCountry": "3 750 000 FCFA",
+    "spec1": "Land Cruiser VDJ200",
+    "spec2": "Occasion révisée A+",
+    "spec3": "V8 4.5L",
+    "spec4": "320 kg sur Palette",
+    "spec5": "1VD-FTV",
+    "spec6": "Stock Stuttgart (DE)",
+    "image": "https://images.unsplash.com/photo-1590494056286-578d0f1bd923?q=80&w=1200",
+    "images": [
+      "https://images.unsplash.com/photo-1590494056286-578d0f1bd923?q=80&w=1200",
+      "https://images.unsplash.com/photo-1635334135541-b21a8cdff0ad?q=80&w=1200"
+    ],
+    "desc": "Moteur extrêmement robuste et rare, importé du réseau allemand. Compression testée par nos soins, pas de fuite d'huile. Vendu complet avec turbo, alternateur et injecteurs. Fixé sur palette prête à être enfournée au port maritime d'Anvers."
+  },
+  {
+    "id": "cosmetic_1701000003",
+    "type": "cosmetic",
+    "title": "Palette Destockage Dermo-Cosmétique",
+    "pricePort": "1 800 000 FCFA",
+    "priceCountry": "1 950 000 FCFA",
+    "spec1": "Eucerin & Nivea",
+    "spec2": "850 Unités (Mixte)",
+    "spec3": "Soin Corps & Visage",
+    "spec4": "1 Palette Filmée",
+    "spec5": "Octobre 2027",
+    "spec6": "Certificat B2B Direct",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=1200",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=1200",
+      "https://images.unsplash.com/photo-1615397323113-24155fb21cb1?q=80&w=1200",
+      "https://images.unsplash.com/photo-1556228578-8d89cb21eb3b?q=80&w=1200"
+    ],
+    "desc": "Achat direct chez les grossistes allemands certifiés. Ce lot mixte haut de gamme est parfait pour l'approvisionnement des pharmacies de Bamako ou cliniques dermatologiques. Remise allant jusqu'à 50% du prix public conseillé avec conditions de conservation scellées."
+  }
+]

@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Globe, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+// @ts-ignore
 import { useLanguage } from "@/lib/i18n/context"
 import { LANGUAGES } from "@/lib/i18n/translations"
-import { Globe, ChevronDown } from "lucide-react"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -23,11 +23,10 @@ export function Header() {
   }, [])
 
   const navigation = [
-    { name: t.nav.expertise, href: "#services" },
-    { name: t.nav.process, href: "#processus" },
-    { name: t.nav.sourcing, href: "#produits" },
-    { name: t.nav.agency, href: "#apropos" },
-    { name: t.nav.contact, href: "#contact" },
+    { name: "Le Catalogue", href: "#produits" },
+    { name: "Simulateur VIP", href: "#calculateur" },
+    { name: "Concept Logistique", href: "#services" },
+    { name: "Commande Express", href: "#contact" },
   ]
 
   const currentLang = LANGUAGES.find((l) => l.code === lang)!
@@ -120,6 +119,7 @@ export function Header() {
 
           {/* Desktop right: Lang switcher + CTA */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
+            
             {/* Language Switcher */}
             <div className="relative">
               <button
@@ -138,7 +138,7 @@ export function Header() {
               </button>
 
               {langMenuOpen && (
-                <div className="absolute top-full right-0 mt-2 bg-background border border-border/40 rounded-2xl shadow-2xl overflow-hidden z-50 min-w-[160px]">
+                <div className="absolute top-full right-0 mt-2 bg-background border border-border/40 rounded-2xl shadow-2xl overflow-hidden z-[100] min-w-[160px]">
                   {LANGUAGES.map((l) => (
                     <button
                       key={l.code}
@@ -163,7 +163,7 @@ export function Header() {
       </div>
 
       {/* Mobile menu */}
-      <div className={cn("fixed inset-0 z-50 transition-all duration-500 lg:hidden", mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none")}>
+      <div className={cn("fixed inset-0 z-[100] transition-all duration-500 lg:hidden", mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none")}>
         <div className="fixed inset-0 bg-background/97 backdrop-blur-2xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-border">
           <div className="flex items-center justify-between mb-16">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>

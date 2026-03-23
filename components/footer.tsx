@@ -116,6 +116,8 @@ export function Footer() {
             {navLinks.legal.map((item) => (
               <Link key={item.name} href={item.href} className="text-xs text-white/30 font-medium uppercase tracking-widest hover:text-white transition-colors">{item.name}</Link>
             ))}
+            {/* Le lien Admin discret */}
+            <Link href="/admin" className="text-xs text-white/10 font-medium uppercase tracking-widest hover:text-white/30 transition-colors">Portail Interne</Link>
           </div>
         </div>
       </div>
