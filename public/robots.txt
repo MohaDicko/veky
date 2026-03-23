@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin areas (future-proofing)
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap
+Sitemap: https://veky-shop.com/sitemap.xml
