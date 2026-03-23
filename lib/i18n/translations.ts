@@ -75,7 +75,7 @@ export const translations = {
     contact: {
       label: "Contact Direct", title: "Prêt à importer l'excellence ?",
       emailLabel: "Email Officiel", phoneLabel: "Ligne Directe (Bielefeld)", addressLabel: "Bureaux Opelstr.",
-      address: "33617 Bielefeld, Nordrhein-Westfalen, DE.",
+      address: "33602 Bielefeld, Nordrhein-Westfalen, DE.",
       statusLabel: "Opérationnel", statusText: "Nos agents sont actuellement sur le terrain. Réponses sous 2h.",
       formTitle: "Demander un devis certifié", formSubtitle: "Précisez votre besoin pour une étude de faisabilité immédiate.",
       firstName: "Prénom", lastName: "Nom", email: "Email", phone: "Téléphone / WhatsApp",
@@ -186,7 +186,7 @@ export const translations = {
     contact: {
       label: "Direct Contact", title: "Ready to import excellence?",
       emailLabel: "Official Email", phoneLabel: "Direct Line (Bielefeld)", addressLabel: "Opelstr. Offices",
-      address: "33617 Bielefeld, Nordrhein-Westfalen, Germany.",
+      address: "33602 Bielefeld, Nordrhein-Westfalen, Germany.",
       statusLabel: "Operational", statusText: "Our agents are currently in the field. Responses within 2 hours.",
       formTitle: "Request a certified quote", formSubtitle: "Specify your need for an immediate feasibility study.",
       firstName: "First name", lastName: "Last name", email: "Email", phone: "Phone / WhatsApp",
@@ -297,7 +297,7 @@ export const translations = {
     contact: {
       label: "Direktkontakt", title: "Bereit für Ihren Import?",
       emailLabel: "Offizielle E-Mail", phoneLabel: "Direktleitung (Bielefeld)", addressLabel: "Büro Opelstr.",
-      address: "33617 Bielefeld, Nordrhein-Westfalen, Deutschland.",
+      address: "33602 Bielefeld, Nordrhein-Westfalen, Deutschland.",
       statusLabel: "Betriebsbereit", statusText: "Unsere Agenten sind derzeit im Einsatz. Antwort innerhalb von 2 Stunden.",
       formTitle: "Zertifiziertes Angebot anfordern", formSubtitle: "Beschreiben Sie Ihren Bedarf für eine sofortige Machbarkeitsstudie.",
       firstName: "Vorname", lastName: "Nachname", email: "E-Mail", phone: "Telefon / WhatsApp",
@@ -408,7 +408,7 @@ export const translations = {
     contact: {
       label: "التواصل المباشر", title: "هل أنت مستعد لاستيراد التميز؟",
       emailLabel: "البريد الرسمي", phoneLabel: "الخط المباشر (بيليفيلد)", addressLabel: "مكاتب أوبلشتر.",
-      address: "33617 بيليفيلد، نوردراين-فستفالن، ألمانيا.",
+      address: "33602 بيليفيلد، نوردراين-فستفالن، ألمانيا.",
       statusLabel: "نعمل الآن", statusText: "فريقنا في الميدان حالياً. ردود في غضون ساعتين.",
       formTitle: "طلب عرض سعر معتمد", formSubtitle: "حدد احتياجاتك لدراسة جدوى فورية.",
       firstName: "الاسم الأول", lastName: "اسم العائلة", email: "البريد الإلكتروني", phone: "الهاتف / واتساب",
@@ -519,7 +519,7 @@ export const translations = {
     contact: {
       label: "直接联系", title: "准备好进口卓越品质了吗？",
       emailLabel: "官方邮箱", phoneLabel: "直线电话（比勒费尔德）", addressLabel: "Opelstr. 办公室",
-      address: "德国北莱茵-威斯特法伦州比勒费尔德33617。",
+      address: "德国北莱茵-威斯特法伦州比勒费尔德33602。",
       statusLabel: "运营中", statusText: "我们的经纪人目前在外工作，2小时内回复。",
       formTitle: "申请认证报价", formSubtitle: "说明需求以获取即时可行性分析。",
       firstName: "名", lastName: "姓", email: "电子邮箱", phone: "电话 / WhatsApp",

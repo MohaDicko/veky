@@ -22,7 +22,7 @@ export default function SchemaOrg() {
           "@type": "PostalAddress",
           "streetAddress": "Opelstraße",
           "addressLocality": "Bielefeld",
-          "postalCode": "33617",
+          "postalCode": "33602",
           "addressRegion": "Nordrhein-Westfalen",
           "addressCountry": "DE"
         },
