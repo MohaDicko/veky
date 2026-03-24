@@ -79,12 +79,12 @@ export function Products() {
           </div>
 
           {/* Grid of items */}
-          <ul className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch" role="list">
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch" role="list">
             {filteredItems.map((item, index) => (
                <ProductCard key={item.id} item={item} index={index} onClick={() => setSelectedItem(item)} />
             ))}
             {filteredItems.length === 0 && (
-               <div className="col-span-12 py-20 text-center">
+               <div className="col-span-full py-20 text-center">
                   <p className="text-muted-foreground font-bold text-lg">Aucune annonce disponible dans cette catégorie pour le moment.</p>
                </div>
             )}
@@ -116,10 +116,7 @@ function ProductCard({ item, index, onClick }: { item: any, index: number, onCli
   return (
     <li
       onClick={onClick}
-      className={cn(
-        "group relative overflow-hidden rounded-[3rem] cursor-pointer transition-all duration-[1s] ease-out hover:shadow-2xl hover:shadow-primary/10",
-        index % 3 === 1 ? "md:col-span-12 lg:col-span-8 aspect-[16/9]" : "md:col-span-12 lg:col-span-4 aspect-[4/5]"
-      )}
+      className="group relative overflow-hidden rounded-[2rem] cursor-pointer transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 aspect-[4/3]"
       onMouseLeave={() => setCurrentImg(0)}
     >
       <div className="absolute inset-0 z-0 bg-slate-900">
@@ -229,8 +226,8 @@ function ProductModal({ item, onClose }: { item: any, onClose: () => void }) {
              {/* Galerie */}
              <div>
                {/* Main Image */}
-               <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-muted/30 rounded-2xl overflow-hidden group border border-border/40">
-                  <img src={images[current]} className="w-full h-full object-contain bg-black/5" alt={item.title} />
+               <div className="relative w-full aspect-[4/3] sm:aspect-video bg-background rounded-2xl overflow-hidden group border border-border/40 flex items-center justify-center">
+                  <img src={images[current]} className="w-full h-full object-cover lg:object-contain bg-background" alt={item.title} />
                   {images.length > 1 && (
                     <>
                       <button onClick={(e) => { e.stopPropagation(); setCurrent(p => p===0 ? images.length-1 : p-1) }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"><ChevronLeft /></button>
