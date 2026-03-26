@@ -1,5 +1,125 @@
 [
   {
+    "id": "1774534137773",
+    "type": "car",
+    "title": "Final Validation Car",
+    "pricePort": "5 000 000",
+    "priceCountry": "6 000 000",
+    "meta1": "Essence",
+    "meta2": "20 000 km",
+    "spec1": "Essence",
+    "spec2": "20 000 km",
+    "spec3": "2023",
+    "spec4": "Automatique",
+    "spec5": "Bleu",
+    "spec6": "",
+    "image": "https://images.unsplash.com/photo-1542362567-b05503f3f5f4",
+    "images": [
+      "https://images.unsplash.com/photo-1542362567-b05503f3f5f4"
+    ],
+    "desc": "Validation test car description."
+  },
+  {
+    "id": "1774533596640",
+    "type": "car",
+    "title": "Final Validation Car",
+    "pricePort": "5000000",
+    "priceCountry": "6000000",
+    "meta1": "Essence",
+    "meta2": "65000",
+    "spec1": "Essence",
+    "spec2": "65000",
+    "spec3": "2021",
+    "spec4": "Automatique",
+    "spec5": "Noir",
+    "spec6": "2.0L - 190ch",
+    "image": "https://images.unsplash.com/photo-1542362567-b05503f3f5f4",
+    "images": [
+      "https://images.unsplash.com/photo-1542362567-b05503f3f5f4"
+    ],
+    "desc": "Validation test car description."
+  },
+  {
+    "id": "1774527122657",
+    "type": "car",
+    "title": "Test Mercedes Upload",
+    "pricePort": "15 000 000 FCFA",
+    "priceCountry": "17 000 000 FCFA",
+    "meta1": "Essence",
+    "meta2": "5 000 km",
+    "spec1": "Essence",
+    "spec2": "5 000 km",
+    "spec3": "2024",
+    "spec4": "Automatique",
+    "spec5": "",
+    "spec6": "2.0L - 190ch",
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1000&auto=format&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1000&auto=format&fit=crop"
+    ],
+    "desc": "Ceci est un test de televersement reel."
+  },
+  {
+    "id": "1774527091431",
+    "type": "car",
+    "title": "Test Mercedes Upload",
+    "pricePort": "15 000 000 FCFA",
+    "priceCountry": "17 000 000 FCFA",
+    "meta1": "Essence",
+    "meta2": "5 000 km",
+    "spec1": "Essence",
+    "spec2": "5 000 km",
+    "spec3": "2024",
+    "spec4": "Automatique",
+    "spec5": "",
+    "spec6": "2.0L - 190ch",
+    "image": "http://localhost:3000/placeholder.jpg",
+    "images": [
+      "http://localhost:3000/placeholder.jpg"
+    ],
+    "desc": "Ceci est un test de televersement reel."
+  },
+  {
+    "id": "1774527036792",
+    "type": "car",
+    "title": "Test Mercedes Upload",
+    "pricePort": "15 000 000 FCFA",
+    "priceCountry": "17 000 000 FCFA",
+    "meta1": "Essence",
+    "meta2": "5 000 km",
+    "spec1": "Essence",
+    "spec2": "5 000 km",
+    "spec3": "2024",
+    "spec4": "",
+    "spec5": "",
+    "spec6": "",
+    "image": "http://localhost:3000/placeholder.jpg",
+    "images": [
+      "http://localhost:3000/placeholder.jpg"
+    ],
+    "desc": "Test de mise en ligne avec lien externe (car upload direct impossible pour l'agent)."
+  },
+  {
+    "id": "1774526946562",
+    "type": "car",
+    "title": "Test Mercedes Upload",
+    "pricePort": "15 000 000 FCFA",
+    "priceCountry": "17 000 000 FCFA",
+    "meta1": "Essence",
+    "meta2": "5 000 km",
+    "spec1": "Essence",
+    "spec2": "5 000 km",
+    "spec3": "2024",
+    "spec4": "",
+    "spec5": "",
+    "spec6": "",
+    "image": "/placeholder.jpg",
+    "images": [
+      "/placeholder.jpg"
+    ],
+    "desc": "Test de mise en ligne avec lien externe (car upload direct impossible pour l'agent)."
+  },
+  {
     "id": "1711202201999",
     "type": "car",
     "title": "Mercedes-Benz GLE 350 de 4MATIC AMG Line",

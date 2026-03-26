@@ -93,7 +93,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <SchemaOrg />
       </head>
-      <body className="font-sans antialiased bg-background text-foreground relative">
+      <body className="font-sans antialiased bg-background text-foreground relative" suppressHydrationWarning={true}>
         <LanguageProvider>
           <Preloader />
           {/* Skip to main content — Accessibilité WCAG 2.1 */}

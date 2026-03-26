@@ -12,7 +12,10 @@ export default function AdminPage() {
 
   const [items, setItems] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [isUploading, setIsUploading] = useState(false)
   const [selectedType, setSelectedType] = useState("car")
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([])
+  const [previewImages, setPreviewImages] = useState<string[]>([])
 
   useEffect(() => {
     if (isAuthenticated) fetchItems()
@@ -32,7 +35,8 @@ export default function AdminPage() {
     e.preventDefault()
     const res = await fetch("/api/auth", {
       method: "POST",
-      body: JSON.stringify({ token: password })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
     })
     
     if (res.ok) {
@@ -42,13 +46,69 @@ export default function AdminPage() {
     }
   }
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files)
+      setSelectedFiles(prev => [...prev, ...filesArray])
+      
+      const newPreviews = filesArray.map(file => URL.createObjectURL(file))
+      setPreviewImages(prev => [...prev, ...newPreviews])
+    }
+  }
+
+  const removeFile = (index: number) => {
+    URL.revokeObjectURL(previewImages[index])
+    setSelectedFiles(prev => prev.filter((_, i) => i !== index))
+    setPreviewImages(prev => prev.filter((_, i) => i !== index))
+  }
+
   const handleAdd = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const formData = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    setIsUploading(true)
+    const formData = new FormData(form)
     
+    let uploadedUrls: string[] = []
+    
+    if (selectedFiles.length > 0) {
+      const uploadFormData = new FormData()
+      selectedFiles.forEach(file => {
+        uploadFormData.append('files', file)
+      })
+      
+      try {
+        const uploadRes = await fetch("/api/upload", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${password}` },
+          body: uploadFormData
+        })
+        
+        if (uploadRes.ok) {
+          const data = await uploadRes.json()
+          uploadedUrls = data.urls
+        } else {
+          alert("Erreur lors du téléversement des images.")
+          setIsUploading(false)
+          return
+        }
+      } catch (err) {
+        alert("Erreur réseau lors du téléversement.")
+        setIsUploading(false)
+        return
+      }
+    }
+
     // Parse les images séparées par un retour à la ligne
     const imagesRaw = formData.get("images") as string
-    const imagesList = imagesRaw.split(/\r?\n/).map(s => s.trim()).filter(Boolean)
+    const manualUrls = imagesRaw.split(/\r?\n/).map(s => s.trim()).filter(Boolean)
+    
+    const imagesList = [...uploadedUrls, ...manualUrls]
+
+    if (imagesList.length === 0) {
+      alert("Veuillez ajouter au moins une photo (téléversement ou lien).")
+      setIsUploading(false)
+      return
+    }
 
     const newItem = {
       type: selectedType,
@@ -65,7 +125,7 @@ export default function AdminPage() {
       spec4: formData.get("spec4"),
       spec5: formData.get("spec5"),
       spec6: formData.get("spec6"),
-      image: imagesList[0] || "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=800", // Fallback
+      image: imagesList[0],
       images: imagesList,
       desc: formData.get("desc"),
     }
@@ -79,14 +139,18 @@ export default function AdminPage() {
       body: JSON.stringify(newItem)
     })
     
+    setIsUploading(false)
     if (res.ok) {
-      e.currentTarget.reset()
+      form.reset()
+      setSelectedFiles([])
+      setPreviewImages([])
       fetchItems()
     } else {
       alert("Erreur de sécurité : session expirée ou piratage détecté.")
       setIsAuthenticated(false)
     }
   }
+
 
   const handleDelete = async (id: string) => {
     if(!window.confirm("Supprimer cette annonce ?")) return;
@@ -186,24 +250,64 @@ export default function AdminPage() {
               </div>
             </div>
             
-            <div className="space-y-2 border-t border-border/40 pt-6">
-              <label className="text-sm font-bold opacity-70 flex items-center gap-2">
-                <Images className="w-4 h-4" /> URLs des photos (Galerie)
-              </label>
-              <p className="text-xs text-muted-foreground mb-2">Collez un lien par ligne. La première photo sera l'image d'arriere plan et le reste défilera dans le mode de luxe.</p>
-              <textarea  
-                name="images" 
-                required 
-                placeholder="https://images.unsplash.com/...&#10;https://images.unsplash.com/...&#10;https://images.unsplash.com/..." 
-                className="w-full h-32 bg-gray-50/80 rounded-2xl p-4 border border-border/40 focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none" 
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-border/40 pt-6">
+              <div className="space-y-2">
+                <label className="text-sm font-bold opacity-70 flex items-center gap-2">
+                  <Images className="w-4 h-4" /> Téléverser photos réelles
+                </label>
+                <div className="relative group">
+                   <input 
+                    type="file" 
+                    name="fileUpload" 
+                    multiple 
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                   />
+                   <div className="h-32 border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center bg-gray-50 group-hover:bg-gray-100 group-hover:border-primary/30 transition-all">
+                      <Images className="w-8 h-8 text-gray-400 mb-2 group-hover:text-primary transition-colors" />
+                      <p className="text-xs font-bold text-gray-500 group-hover:text-primary">Ajouter des photos</p>
+                      <p className="text-[10px] text-gray-400 mt-1">Multi-sélection supportée</p>
+                   </div>
+                </div>
+
+                {previewImages.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-4 max-h-40 overflow-y-auto p-2 bg-gray-50 rounded-xl border border-gray-100">
+                    {previewImages.map((src, idx) => (
+                      <div key={idx} className="relative group/preview w-20 h-20 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                        <img src={src} className="w-full h-full object-cover" alt={`Prévisualisation ${idx}`} />
+                        <button 
+                          type="button" 
+                          onClick={() => removeFile(idx)}
+                          className="absolute inset-0 bg-black/40 text-white flex items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity"
+                        >
+                          <Trash2 className="w-5 h-5" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-bold opacity-70 flex items-center gap-2">
+                  <Images className="w-4 h-4" /> Ou liens photos externes
+                </label>
+                <textarea  
+                  name="images" 
+                  placeholder="https://images.unsplash.com/..." 
+                  className="w-full h-32 bg-gray-50/80 rounded-2xl p-4 border border-border/40 focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none text-sm" 
+                />
+              </div>
             </div>
 
             <div className="space-y-2">
               <label className="text-sm font-bold opacity-70">Courte Description</label>
               <Input name="desc" required placeholder="Ex: État impeccable, certifié. Volant cuir, toit ouvrant." className="h-14 bg-gray-50/80 rounded-2xl" />
             </div>
-            <Button type="submit" size="lg" className="w-full h-16 text-lg font-bold rounded-2xl bg-primary">Mettre en ligne sur le site</Button>
+            <Button type="submit" size="lg" disabled={isUploading} className="w-full h-16 text-lg font-bold rounded-2xl bg-primary">
+              {isUploading ? "Téléversement en cours..." : "Mettre en ligne sur le site"}
+            </Button>
           </form>
         </div>
 

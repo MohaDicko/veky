@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 
-const ADMIN_SECRET = process.env.ADMIN_PASSWORD || "aya2026!secure"
+const ADMIN_SECRET = process.env.ADMIN_PASSWORD || "admin"
 
 export async function POST(req: Request) {
   try {
-    const { token } = await req.json()
-    if (token === ADMIN_SECRET) {
+    const { username, password } = await req.json()
+    if (username === "admin" && password === ADMIN_SECRET) {
       return NextResponse.json({ success: true })
     }
     return NextResponse.json({ success: false }, { status: 401 })

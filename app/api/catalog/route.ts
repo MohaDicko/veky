@@ -5,7 +5,7 @@ import path from 'path'
 const dataFilePath = path.join(process.cwd(), 'data', 'catalog.json')
 
 // Le mot de passe ultra-sécurisé de la multinationale (L'administrateur peut le changer ici)
-const ADMIN_SECRET = process.env.ADMIN_PASSWORD || "aya2026!secure"
+const ADMIN_SECRET = process.env.ADMIN_PASSWORD || "admin"
 
 function isAuthorized(req: Request) {
   const authHeader = req.headers.get("authorization")
