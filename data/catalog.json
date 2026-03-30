@@ -1,43 +1,23 @@
 [
   {
-    "id": "1774534137773",
+    "id": "1774912332241",
     "type": "car",
-    "title": "Final Validation Car",
-    "pricePort": "5 000 000",
-    "priceCountry": "6 000 000",
-    "meta1": "Essence",
-    "meta2": "20 000 km",
-    "spec1": "Essence",
-    "spec2": "20 000 km",
-    "spec3": "2023",
-    "spec4": "Automatique",
-    "spec5": "Bleu",
-    "spec6": "",
-    "image": "https://images.unsplash.com/photo-1542362567-b05503f3f5f4",
-    "images": [
-      "https://images.unsplash.com/photo-1542362567-b05503f3f5f4"
-    ],
-    "desc": "Validation test car description."
-  },
-  {
-    "id": "1774533596640",
-    "type": "car",
-    "title": "Final Validation Car",
-    "pricePort": "5000000",
-    "priceCountry": "6000000",
-    "meta1": "Essence",
+    "title": "test",
+    "pricePort": "10000000",
+    "priceCountry": "15000000",
+    "meta1": "ESSENCE",
     "meta2": "65000",
-    "spec1": "Essence",
+    "spec1": "ESSENCE",
     "spec2": "65000",
     "spec3": "2021",
     "spec4": "Automatique",
-    "spec5": "Noir",
-    "spec6": "2.0L - 190ch",
-    "image": "https://images.unsplash.com/photo-1542362567-b05503f3f5f4",
+    "spec5": "noire ",
+    "spec6": "4 L",
+    "image": "/uploads/1774912332171-e509285f-68a3-42a5-bfc8-30a3e5b35c3d-TEST.jfif",
     "images": [
-      "https://images.unsplash.com/photo-1542362567-b05503f3f5f4"
+      "/uploads/1774912332171-e509285f-68a3-42a5-bfc8-30a3e5b35c3d-TEST.jfif"
     ],
-    "desc": "Validation test car description."
+    "desc": "TEST"
   },
   {
     "id": "1774527122657",
@@ -58,66 +38,6 @@
       "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1000&auto=format&fit=crop"
     ],
     "desc": "Ceci est un test de televersement reel."
-  },
-  {
-    "id": "1774527091431",
-    "type": "car",
-    "title": "Test Mercedes Upload",
-    "pricePort": "15 000 000 FCFA",
-    "priceCountry": "17 000 000 FCFA",
-    "meta1": "Essence",
-    "meta2": "5 000 km",
-    "spec1": "Essence",
-    "spec2": "5 000 km",
-    "spec3": "2024",
-    "spec4": "Automatique",
-    "spec5": "",
-    "spec6": "2.0L - 190ch",
-    "image": "http://localhost:3000/placeholder.jpg",
-    "images": [
-      "http://localhost:3000/placeholder.jpg"
-    ],
-    "desc": "Ceci est un test de televersement reel."
-  },
-  {
-    "id": "1774527036792",
-    "type": "car",
-    "title": "Test Mercedes Upload",
-    "pricePort": "15 000 000 FCFA",
-    "priceCountry": "17 000 000 FCFA",
-    "meta1": "Essence",
-    "meta2": "5 000 km",
-    "spec1": "Essence",
-    "spec2": "5 000 km",
-    "spec3": "2024",
-    "spec4": "",
-    "spec5": "",
-    "spec6": "",
-    "image": "http://localhost:3000/placeholder.jpg",
-    "images": [
-      "http://localhost:3000/placeholder.jpg"
-    ],
-    "desc": "Test de mise en ligne avec lien externe (car upload direct impossible pour l'agent)."
-  },
-  {
-    "id": "1774526946562",
-    "type": "car",
-    "title": "Test Mercedes Upload",
-    "pricePort": "15 000 000 FCFA",
-    "priceCountry": "17 000 000 FCFA",
-    "meta1": "Essence",
-    "meta2": "5 000 km",
-    "spec1": "Essence",
-    "spec2": "5 000 km",
-    "spec3": "2024",
-    "spec4": "",
-    "spec5": "",
-    "spec6": "",
-    "image": "/placeholder.jpg",
-    "images": [
-      "/placeholder.jpg"
-    ],
-    "desc": "Test de mise en ligne avec lien externe (car upload direct impossible pour l'agent)."
   },
   {
     "id": "1711202201999",
@@ -178,45 +98,5 @@
     "spec5": "OM651.911",
     "spec6": "Daimler AG (Allemagne)",
     "desc": "Moteur complet OM 651 démonté sur un véhicule accidenté (arrière) en Allemagne, certifié à 114.000 km réels. \n\nVendu complet avec injection (injecteurs Delphi contrôlés), turbocompresseur, pompe à eau et faisceau moteur tronqué. \n\nIdéal pour remplacement standard sur Sprinter ou Classe C/E taxi. Compressions testées à froid, aucun claquement de chaîne (tendeur vérifié avant démontage). \n\nLivré sur palette sanglée et filmée avec protection anti-corrosion marine pour le transport."
-  },
-  {
-    "id": "1711202204666",
-    "type": "cosmetic",
-    "title": "Palette Destockage PREMIUM Dermatologie & Skincare",
-    "pricePort": "4 500 €",
-    "priceCountry": "3 400 000 FCFA",
-    "image": "https://images.unsplash.com/photo-1596462502278-27bf85033c5a?w=1200",
-    "images": [
-      "https://images.unsplash.com/photo-1596462502278-27bf85033c5a?w=1200",
-      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=1200",
-      "https://images.unsplash.com/photo-1608248593802-8081547b9484?w=1200"
-    ],
-    "spec1": "Eucerin, Balea, La Roche-Posay",
-    "spec2": "Palette Complète (~800 pièces)",
-    "spec3": "Soins Visage & Corps",
-    "spec4": "Palette Europe Standard (120x80)",
-    "spec5": "Validité Garantie > Nov 2027",
-    "spec6": "Lots de surstock pharmacies allemandes",
-    "desc": "Excellente opportunité B2B pour parapharmacies ou revendeurs premium en Afrique de l'Ouest. \n\nCe lot contient uniquement des produits authentiques et traçables issus du marché allemand (pas de contrefaçons ni de marché gris oriental). \n\nDétails de la composition (approx) :\n- 30% Gels moussants et nettoyants dermo-cosmétiques (Peaux sensibles).\n- 40% Crèmes hydratantes corps & Mains (Balea, Neutrogena).\n- 30% Soins ciblés visage (Sérums Vitamine C, Hyaluron).\n\nLes produits sont stockés en entrepôt climatisé en RFA. Filmage opaque pour la sécurité durant le transport maritime."
-  },
-  {
-    "id": "1711202205555",
-    "type": "cosmetic",
-    "title": "Lot Grossiste: Déodorants AXE Assortis (1200 pcs)",
-    "pricePort": "2 100 €",
-    "priceCountry": "1 580 000 FCFA",
-    "image": "https://images.unsplash.com/photo-1571781418606-1cc12df2d142?w=1200",
-    "images": [
-      "https://images.unsplash.com/photo-1571781418606-1cc12df2d142?w=1200",
-      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1200",
-      "https://images.unsplash.com/photo-1556228720-1c2a01f8ce14?w=1200"
-    ],
-    "spec1": "Axe (Unilever)",
-    "spec2": "Palette 1200 sprays (150ml)",
-    "spec3": "Bodyspray & Anti-transpirant",
-    "spec4": "Cartons originaux",
-    "spec5": "Validité longue > 2028",
-    "spec6": "Dark Temptation, Africa, Apollo",
-    "desc": "Destockage massif de déodorants Axe provenant directement des points de distribution européens.\n\nLot idéal pour les grossistes, supermarchés, ou revendeurs marchands en Afrique cherchant des produits authentiques (fabrication européenne stricte). \n\nChaque palette est solidement conditionnée dans ses cartons d'origine scellés avec codes-barres européens. Marchandise inspectée et traçable vis-à-vis d'Unilever. \nMix de parfums best-sellers internationaux (Dark Temptation, Africa, Apollo, Excite). Chargement direct en LCL disponible."
   }
 ]

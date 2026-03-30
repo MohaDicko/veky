@@ -100,7 +100,7 @@ export default function AdminPage() {
 
     // Parse les images séparées par un retour à la ligne
     const imagesRaw = formData.get("images") as string
-    const manualUrls = imagesRaw.split(/\r?\n/).map(s => s.trim()).filter(Boolean)
+    const manualUrls = imagesRaw ? imagesRaw.split(/\r?\n/).map(s => s.trim()).filter(Boolean) : []
     
     const imagesList = [...uploadedUrls, ...manualUrls]
 
