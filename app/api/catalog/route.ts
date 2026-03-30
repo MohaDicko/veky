@@ -12,6 +12,8 @@ function isAuthorized(req: Request) {
   return authHeader === `Bearer ${ADMIN_SECRET}`
 }
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   try {
     const fileContents = await fs.readFile(dataFilePath, 'utf8')

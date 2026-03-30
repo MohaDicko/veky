@@ -12,13 +12,15 @@ async function testUpload() {
   console.log("File size:", fileStats.size, "bytes");
 
   try {
+    const formData = new FormData();
+    formData.append("files", new Blob([fileContent]), "placeholder.jpg");
+
     const res = await fetch("http://localhost:3000/api/upload", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer aya2026!secure"
+        "Authorization": "Bearer admin" // or whatever is actually working locally
       },
-      // In Node 18+ fetch handles FormData or Blob
-      body: new FormData() 
+      body: formData 
     });
     // This will likely fail with 'No files provided' but validates the route and auth
     const data = await res.json();

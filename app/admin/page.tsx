@@ -23,7 +23,7 @@ export default function AdminPage() {
 
   const fetchItems = async () => {
     try {
-      const res = await fetch("/api/catalog")
+      const res = await fetch('/api/catalog?t=' + Date.now(), { cache: 'no-store' })
       const data = await res.json()
       setItems(data)
     } finally {
@@ -87,7 +87,8 @@ export default function AdminPage() {
           const data = await uploadRes.json()
           uploadedUrls = data.urls
         } else {
-          alert("Erreur lors du téléversement des images.")
+          const errData = await uploadRes.text();
+          alert(`Erreur lors du téléversement des images. Détails: ${uploadRes.status} - ${errData}`)
           setIsUploading(false)
           return
         }

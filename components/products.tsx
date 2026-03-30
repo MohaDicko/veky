@@ -14,7 +14,7 @@ export function Products() {
   const [selectedItem, setSelectedItem] = useState<any>(null)
   
   useEffect(() => {
-    fetch('/api/catalog')
+    fetch('/api/catalog?t=' + Date.now(), { cache: 'no-store' })
       .then(res => res.json())
       .then(data => setItems(data))
       .catch(console.error)
