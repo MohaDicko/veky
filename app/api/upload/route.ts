@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { writeFile, mkdir } from 'fs/promises'
 import path from 'path'
 import crypto from 'crypto'
+import { put } from '@vercel/blob'
 
 const ADMIN_SECRET = process.env.ADMIN_PASSWORD || "admin"
 
@@ -23,19 +24,26 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'No files provided' }, { status: 400 })
     }
 
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads')
-    await mkdir(uploadDir, { recursive: true })
     const urls: string[] = []
 
     for (const file of files) {
-      const bytes = await file.arrayBuffer()
-      const buffer = Buffer.from(bytes)
-      
-      const fileName = `${Date.now()}-${crypto.randomUUID()}-${file.name.replace(/\s+/g, '_')}`
-      const filePath = path.join(uploadDir, fileName)
-      
-      await writeFile(filePath, buffer)
-      urls.push(`/uploads/${fileName}`)
+      if (process.env.BLOB_READ_WRITE_TOKEN) {
+        // Mode Vercel (Production)
+        const blob = await put(file.name, file, { access: 'public' })
+        urls.push(blob.url)
+      } else {
+        // Mode Local
+        const bytes = await file.arrayBuffer()
+        const buffer = Buffer.from(bytes)
+        const uploadDir = path.join(process.cwd(), 'public', 'uploads')
+        await mkdir(uploadDir, { recursive: true }).catch(() => {})
+        
+        const fileName = `${Date.now()}-${crypto.randomUUID()}-${file.name.replace(/\s+/g, '_')}`
+        const filePath = path.join(uploadDir, fileName)
+        
+        await writeFile(filePath, buffer)
+        urls.push(`/uploads/${fileName}`)
+      }
     }
 
     return NextResponse.json({ success: true, urls })
