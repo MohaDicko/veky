@@ -16,9 +16,9 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://images.unsplash.com https://grainy-gradients.vercel.app",
+      "img-src 'self' data: blob: https://images.unsplash.com https://grainy-gradients.vercel.app https://*.public.blob.vercel-storage.com",
       "frame-src 'self' https://www.google.com",
-      "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+      "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.public.blob.vercel-storage.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self' mailto:",
@@ -40,6 +40,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "grainy-gradients.vercel.app",
+      },
+      {
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
       },
     ],
   },
