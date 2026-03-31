@@ -32,24 +32,35 @@ export async function POST(req: Request) {
         const blob = await put(file.name, file, { access: 'public' })
         urls.push(blob.url)
       } else {
-        // Mode Local
+        // Mode Local — écriture dans public/uploads
         const bytes = await file.arrayBuffer()
         const buffer = Buffer.from(bytes)
+
         const uploadDir = path.join(process.cwd(), 'public', 'uploads')
-        await mkdir(uploadDir, { recursive: true }).catch(() => {})
-        
-        const fileName = `${Date.now()}-${crypto.randomUUID()}-${file.name.replace(/\s+/g, '_')}`
+        console.log('[upload] Dossier cible:', uploadDir)
+
+        // Créer le dossier si absent (on laisse l'erreur remonter si impossible)
+        await mkdir(uploadDir, { recursive: true })
+
+        const ext = path.extname(file.name) || ''
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
+        const fileName = `${Date.now()}-${crypto.randomUUID().slice(0, 8)}${ext ? '' : ''}-${safeName}`
         const filePath = path.join(uploadDir, fileName)
-        
+
+        console.log('[upload] Fichier:', filePath, '| Taille:', buffer.byteLength, 'bytes')
         await writeFile(filePath, buffer)
         urls.push(`/uploads/${fileName}`)
       }
     }
 
     return NextResponse.json({ success: true, urls })
-  } catch (error) {
-    console.error('Upload error:', error)
-    return NextResponse.json({ success: false, error: 'Upload failed' }, { status: 500 })
+  } catch (error: any) {
+    // ✅ On expose le vrai message d'erreur pour pouvoir déboguer
+    const message = error?.message || String(error)
+    console.error('[upload] Erreur:', error)
+    return NextResponse.json(
+      { success: false, error: `Upload failed: ${message}` },
+      { status: 500 }
+    )
   }
 }
-
