@@ -1,14 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Trash2, Lock, Images } from "lucide-react"
+import { Trash2, Lock, Images, CheckCircle2, AlertCircle, Loader2 } from "lucide-react"
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  // Stocker le mot de passe dans un ref pour qu'il persiste après le login
+  const savedPassword = useRef("")
 
   const [items, setItems] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -16,6 +18,8 @@ export default function AdminPage() {
   const [selectedType, setSelectedType] = useState("car")
   const [selectedFiles, setSelectedFiles] = useState<File[]>([])
   const [previewImages, setPreviewImages] = useState<string[]>([])
+  const [formError, setFormError] = useState<string | null>(null)
+  const [formSuccess, setFormSuccess] = useState<string | null>(null)
 
   useEffect(() => {
     if (isAuthenticated) fetchItems()
@@ -40,9 +44,11 @@ export default function AdminPage() {
     })
     
     if (res.ok) {
+       // ✅ Mémoriser le mot de passe dans le ref avant de réinitialiser les states
+       savedPassword.current = password
        setIsAuthenticated(true)
     } else {
-       alert("Identifiants incorrects ou accès refusé.")
+       setFormError("Identifiants incorrects ou accès refusé.")
     }
   }
 
@@ -64,6 +70,8 @@ export default function AdminPage() {
 
   const handleAdd = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setFormError(null)
+    setFormSuccess(null)
     const form = e.currentTarget
     setIsUploading(true)
     const formData = new FormData(form)
@@ -77,9 +85,10 @@ export default function AdminPage() {
       })
       
       try {
+        // ✅ Utiliser savedPassword.current (le ref) pour l'authentification
         const uploadRes = await fetch("/api/upload", {
           method: "POST",
-          headers: { "Authorization": `Bearer ${password}` },
+          headers: { "Authorization": `Bearer ${savedPassword.current}` },
           body: uploadFormData
         })
         
@@ -87,13 +96,13 @@ export default function AdminPage() {
           const data = await uploadRes.json()
           uploadedUrls = data.urls
         } else {
-          const errData = await uploadRes.text();
-          alert(`Erreur lors du téléversement des images. Détails: ${uploadRes.status} - ${errData}`)
+          const errData = await uploadRes.text()
+          setFormError(`Erreur upload images (${uploadRes.status}): ${errData}`)
           setIsUploading(false)
           return
         }
       } catch (err) {
-        alert("Erreur réseau lors du téléversement.")
+        setFormError("Erreur réseau lors du téléversement. Vérifiez votre connexion.")
         setIsUploading(false)
         return
       }
@@ -106,7 +115,7 @@ export default function AdminPage() {
     const imagesList = [...uploadedUrls, ...manualUrls]
 
     if (imagesList.length === 0) {
-      alert("Veuillez ajouter au moins une photo (téléversement ou lien).")
+      setFormError("Veuillez ajouter au moins une photo (téléversement ou lien URL).")
       setIsUploading(false)
       return
     }
@@ -131,11 +140,12 @@ export default function AdminPage() {
       desc: formData.get("desc"),
     }
     
+    // ✅ Utiliser savedPassword.current ici aussi
     const res = await fetch("/api/catalog", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${password}`
+        "Authorization": `Bearer ${savedPassword.current}`
       },
       body: JSON.stringify(newItem)
     })
@@ -145,24 +155,25 @@ export default function AdminPage() {
       form.reset()
       setSelectedFiles([])
       setPreviewImages([])
+      setFormSuccess(`✅ Annonce "${newItem.title}" mise en ligne avec succès !`)
       fetchItems()
     } else {
-      alert("Erreur de sécurité : session expirée ou piratage détecté.")
-      setIsAuthenticated(false)
+      const errData = await res.json().catch(() => ({ error: "Réponse non-JSON" }))
+      setFormError(`Erreur API (${res.status}): ${errData.error || "Impossible d'ajouter l'annonce."}`)
     }
   }
 
-
   const handleDelete = async (id: string) => {
     if(!window.confirm("Supprimer cette annonce ?")) return;
+    // ✅ Utiliser savedPassword.current ici aussi
     const res = await fetch(`/api/catalog?id=${id}`, { 
        method: "DELETE",
-       headers: { "Authorization": `Bearer ${password}` }
+       headers: { "Authorization": `Bearer ${savedPassword.current}` }
     })
     if (res.ok) {
        fetchItems()
     } else {
-       alert("Action bloquée. Vous n'avez pas les droits.")
+       setFormError("Suppression bloquée. Vérifiez vos droits d'accès.")
     }
   }
 
@@ -306,8 +317,27 @@ export default function AdminPage() {
               <label className="text-sm font-bold opacity-70">Courte Description</label>
               <Input name="desc" required placeholder="Ex: État impeccable, certifié. Volant cuir, toit ouvrant." className="h-14 bg-gray-50/80 rounded-2xl" />
             </div>
+
+            {/* Bandeau d'erreur */}
+            {formError && (
+              <div className="flex items-start gap-3 bg-red-50 border border-red-200 text-red-700 rounded-2xl p-4">
+                <AlertCircle className="w-5 h-5 mt-0.5 shrink-0" />
+                <p className="text-sm font-semibold">{formError}</p>
+              </div>
+            )}
+
+            {/* Bandeau de succès */}
+            {formSuccess && (
+              <div className="flex items-start gap-3 bg-green-50 border border-green-200 text-green-700 rounded-2xl p-4">
+                <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" />
+                <p className="text-sm font-semibold">{formSuccess}</p>
+              </div>
+            )}
+
             <Button type="submit" size="lg" disabled={isUploading} className="w-full h-16 text-lg font-bold rounded-2xl bg-primary">
-              {isUploading ? "Téléversement en cours..." : "Mettre en ligne sur le site"}
+              {isUploading ? (
+                <span className="flex items-center gap-2"><Loader2 className="w-5 h-5 animate-spin" /> Téléversement en cours...</span>
+              ) : "Mettre en ligne sur le site"}
             </Button>
           </form>
         </div>

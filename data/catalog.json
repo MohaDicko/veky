@@ -1,5 +1,45 @@
 [
   {
+    "id": "1774942308508",
+    "type": "cosmetic",
+    "title": "PARFUM",
+    "pricePort": "10000000",
+    "priceCountry": "20000000",
+    "meta1": "AXE",
+    "meta2": "1000",
+    "spec1": "AXE",
+    "spec2": "1000",
+    "spec3": "DEODORANT",
+    "spec4": "BON ETAT",
+    "spec5": "NON APPRECIABLE",
+    "spec6": "TEST",
+    "image": "/uploads/1774942308478-1edbfa50-6e1f-4d34-8c95-a81f7166d565-118286364.avif",
+    "images": [
+      "/uploads/1774942308478-1edbfa50-6e1f-4d34-8c95-a81f7166d565-118286364.avif"
+    ],
+    "desc": "JUSTE pour tester"
+  },
+  {
+    "id": "1774942022603",
+    "type": "car",
+    "title": "toyota",
+    "pricePort": "5000000",
+    "priceCountry": "6000000",
+    "meta1": "ESSENCE",
+    "meta2": "65000",
+    "spec1": "ESSENCE",
+    "spec2": "65000",
+    "spec3": "2021",
+    "spec4": "manuelle",
+    "spec5": "noire ",
+    "spec6": "7 L",
+    "image": "/uploads/1774942022582-73c1dab0-fecf-430a-bf69-a4f882abb6d7-TEST.jfif",
+    "images": [
+      "/uploads/1774942022582-73c1dab0-fecf-430a-bf69-a4f882abb6d7-TEST.jfif"
+    ],
+    "desc": "TEST 2"
+  },
+  {
     "id": "1774912332241",
     "type": "car",
     "title": "test",
