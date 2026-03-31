@@ -70,33 +70,44 @@ export async function POST(req: Request) {
 
 export async function DELETE(req: Request) {
   if (!isAuthorized(req)) {
-     return NextResponse.json({ success: false, error: 'Accès Non Autorisé' }, { status: 401 })
+    return NextResponse.json({ success: false, error: 'Accès Non Autorisé (Admin Password invalid ?)' }, { status: 401 })
   }
 
   try {
     const { searchParams } = new URL(req.url)
     const id = searchParams.get('id')
-    if (!id) return NextResponse.json({ success: false, error: 'No ID provided' }, { status: 400 })
+    if (!id) return NextResponse.json({ success: false, error: 'ID manquant dans la requête' }, { status: 400 })
 
     if (process.env.KV_REST_API_URL) {
       // Production - Vercel KV
-      let items: any[] = (await kv.get('catalog')) || []
-      items = items.filter((c: any) => c.id !== id)
+      const rawItems = await kv.get('catalog')
+      let items: any[] = Array.isArray(rawItems) ? rawItems : []
+      
+      const beforeCount = items.length
+      // Utilisation de String(id) pour éviter les erreurs de type 
+      items = items.filter((c: any) => String(c.id) !== String(id))
+      
+      if (items.length === beforeCount) {
+        console.warn(`[Catalog DELETE] Aucun item trouvé avec l'id: ${id}`)
+      }
+
       await kv.set('catalog', items)
-      return NextResponse.json({ success: true })
+      return NextResponse.json({ success: true, count: items.length })
     } else {
       // Local
       const fileContents = await fs.readFile(dataFilePath, 'utf8')
       let items = JSON.parse(fileContents)
-      items = items.filter((c: any) => c.id !== id)
+      items = items.filter((c: any) => String(c.id) !== String(id))
       await fs.writeFile(dataFilePath, JSON.stringify(items, null, 2))
       return NextResponse.json({ success: true })
     }
   } catch (error: any) {
-    console.error('[Catalog DELETE]', error)
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 })
+    const msg = error?.message || String(error)
+    console.error('[Catalog DELETE Error]', error)
+    return NextResponse.json({ success: false, error: `Erreur serveur: ${msg}` }, { status: 500 })
   }
 }
+
 
 
 

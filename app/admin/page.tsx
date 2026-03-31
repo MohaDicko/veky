@@ -165,15 +165,21 @@ export default function AdminPage() {
 
   const handleDelete = async (id: string) => {
     if(!window.confirm("Supprimer cette annonce ?")) return;
+    setFormError(null)
+    setFormSuccess(null)
+    
     // ✅ Utiliser savedPassword.current ici aussi
     const res = await fetch(`/api/catalog?id=${id}`, { 
        method: "DELETE",
        headers: { "Authorization": `Bearer ${savedPassword.current}` }
     })
+    
     if (res.ok) {
+       setFormSuccess("✅ Annonce supprimée avec succès !")
        fetchItems()
     } else {
-       setFormError("Suppression bloquée. Vérifiez vos droits d'accès.")
+       const errData = await res.json().catch(() => ({ error: "Impossible de lire la réponse serveur" }))
+       setFormError(`Suppression échouée (${res.status}): ${errData.error || "Droits d'accès insuffisants ou erreur serveur."}`)
     }
   }
 
