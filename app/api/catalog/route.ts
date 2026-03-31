@@ -1,117 +1,99 @@
 import { NextResponse } from 'next/server'
 import fs from 'fs/promises'
 import path from 'path'
+import { put, list, del } from '@vercel/blob'
 
-const dataFilePath = path.join(process.cwd(), 'data', 'catalog.json')
 const ADMIN_SECRET = process.env.ADMIN_PASSWORD || "admin"
+const CATALOG_BLOB_NAME = 'catalog-db.json'
 
 function isAuthorized(req: Request) {
   const authHeader = req.headers.get("authorization")
   return authHeader === `Bearer ${ADMIN_SECRET}`
 }
 
-// ✅ Helper universel KV — compatible Vercel KV et Upstash marketplace
-const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL
-const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
+async function getCatalogData() {
+  try {
+    if (process.env.BLOB_READ_WRITE_TOKEN) {
+      // 1. Chercher le fichier dans le Blob
+      const { blobs } = await list({ prefix: CATALOG_BLOB_NAME })
+      const catalogBlob = blobs.find(b => b.pathname === CATALOG_BLOB_NAME)
 
-async function kvGet(key: string): Promise<any> {
-  const res = await fetch(`${KV_URL}/get/${key}`, {
-    headers: { Authorization: `Bearer ${KV_TOKEN}` },
-    cache: 'no-store'
-  })
-  const data = await res.json()
-  // Upstash retourne { result: "..." } où le résultat est une string JSON
-  if (data.result === null || data.result === undefined) return null
-  try { return typeof data.result === 'string' ? JSON.parse(data.result) : data.result }
-  catch { return data.result }
+      if (catalogBlob) {
+        const response = await fetch(catalogBlob.url)
+        return await response.json()
+      }
+    }
+    
+    // 2. Fallback local (Seed) si Blob absent ou en mode dev local
+    const dataFilePath = path.join(process.cwd(), 'data', 'catalog.json')
+    const fileContents = await fs.readFile(dataFilePath, 'utf8')
+    return JSON.parse(fileContents)
+  } catch (error) {
+    console.error('[Blob DB] Error reading:', error)
+    return []
+  }
 }
 
-async function kvSet(key: string, value: any): Promise<void> {
-  await fetch(`${KV_URL}/set/${key}`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(value)
-  })
+async function saveCatalogData(items: any[]) {
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    // Mode Production Vercel - Écraser le blob existant
+    await put(CATALOG_BLOB_NAME, JSON.stringify(items, null, 2), {
+      access: 'public',
+      addRandomSuffix: false // Pour garder le même nom
+    })
+  } else {
+    // Mode Local
+    const dataFilePath = path.join(process.cwd(), 'data', 'catalog.json')
+    await fs.writeFile(dataFilePath, JSON.stringify(items, null, 2))
+  }
 }
 
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  try {
-    if (KV_URL && KV_TOKEN) {
-      let items = await kvGet('catalog')
-      if (!items) {
-        try {
-          const fileContents = await fs.readFile(dataFilePath, 'utf8')
-          items = JSON.parse(fileContents)
-          await kvSet('catalog', items)
-        } catch { items = [] }
-      }
-      return NextResponse.json(items)
-    } else {
-      const fileContents = await fs.readFile(dataFilePath, 'utf8')
-      return NextResponse.json(JSON.parse(fileContents))
-    }
-  } catch (error: any) {
-    console.error('[catalog GET]', error)
-    return NextResponse.json([])
-  }
+  const items = await getCatalogData()
+  return NextResponse.json(items)
 }
 
 export async function POST(req: Request) {
   if (!isAuthorized(req)) {
-    return NextResponse.json({ success: false, error: 'Accès Non Autorisé' }, { status: 401 })
+     return NextResponse.json({ success: false, error: 'Accès Non Autorisé' }, { status: 401 })
   }
 
   try {
     const body = await req.json()
+    const items = await getCatalogData()
     const newItem = { id: Date.now().toString(), ...body }
-
-    if (KV_URL && KV_TOKEN) {
-      const items: any[] = (await kvGet('catalog')) || []
-      items.unshift(newItem)
-      await kvSet('catalog', items)
-      return NextResponse.json({ success: true, item: newItem })
-    } else {
-      const fileContents = await fs.readFile(dataFilePath, 'utf8')
-      const items = JSON.parse(fileContents)
-      items.unshift(newItem)
-      await fs.writeFile(dataFilePath, JSON.stringify(items, null, 2))
-      return NextResponse.json({ success: true, item: newItem })
-    }
+    
+    items.unshift(newItem)
+    await saveCatalogData(items)
+    
+    return NextResponse.json({ success: true, item: newItem })
   } catch (error: any) {
-    const msg = error?.message || String(error)
-    console.error('[catalog POST]', error)
-    return NextResponse.json({ success: false, error: `Failed to add item: ${msg}` }, { status: 500 })
+    console.error('[Blob DB] Post error:', error)
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 })
   }
 }
 
 export async function DELETE(req: Request) {
   if (!isAuthorized(req)) {
-    return NextResponse.json({ success: false, error: 'Accès Non Autorisé' }, { status: 401 })
+     return NextResponse.json({ success: false, error: 'Accès Non Autorisé' }, { status: 401 })
   }
 
   try {
     const { searchParams } = new URL(req.url)
     const id = searchParams.get('id')
     if (!id) return NextResponse.json({ success: false, error: 'No ID provided' }, { status: 400 })
-
-    if (KV_URL && KV_TOKEN) {
-      let items: any[] = (await kvGet('catalog')) || []
-      items = items.filter((c: any) => c.id !== id)
-      await kvSet('catalog', items)
-      return NextResponse.json({ success: true })
-    } else {
-      const fileContents = await fs.readFile(dataFilePath, 'utf8')
-      let items = JSON.parse(fileContents)
-      items = items.filter((c: any) => c.id !== id)
-      await fs.writeFile(dataFilePath, JSON.stringify(items, null, 2))
-      return NextResponse.json({ success: true })
-    }
+      
+    let items = await getCatalogData()
+    items = items.filter((c: any) => c.id !== id)
+    await saveCatalogData(items)
+    
+    return NextResponse.json({ success: true })
   } catch (error: any) {
-    const msg = error?.message || String(error)
-    console.error('[catalog DELETE]', error)
-    return NextResponse.json({ success: false, error: `Failed to delete: ${msg}` }, { status: 500 })
+    console.error('[Blob DB] Delete error:', error)
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 })
   }
 }
+
 
