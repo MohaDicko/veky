@@ -1,58 +1,42 @@
 import { NextResponse } from 'next/server'
 import fs from 'fs/promises'
 import path from 'path'
-import { put, list, del } from '@vercel/blob'
+import { kv } from '@vercel/kv'
 
+const dataFilePath = path.join(process.cwd(), 'data', 'catalog.json')
 const ADMIN_SECRET = process.env.ADMIN_PASSWORD || "admin"
-const CATALOG_BLOB_NAME = 'catalog-db.json'
 
 function isAuthorized(req: Request) {
   const authHeader = req.headers.get("authorization")
   return authHeader === `Bearer ${ADMIN_SECRET}`
 }
 
-async function getCatalogData() {
-  try {
-    if (process.env.BLOB_READ_WRITE_TOKEN) {
-      // 1. Chercher le fichier dans le Blob
-      const { blobs } = await list({ prefix: CATALOG_BLOB_NAME })
-      const catalogBlob = blobs.find(b => b.pathname === CATALOG_BLOB_NAME)
-
-      if (catalogBlob) {
-        const response = await fetch(catalogBlob.url)
-        return await response.json()
-      }
-    }
-    
-    // 2. Fallback local (Seed) si Blob absent ou en mode dev local
-    const dataFilePath = path.join(process.cwd(), 'data', 'catalog.json')
-    const fileContents = await fs.readFile(dataFilePath, 'utf8')
-    return JSON.parse(fileContents)
-  } catch (error) {
-    console.error('[Blob DB] Error reading:', error)
-    return []
-  }
-}
-
-async function saveCatalogData(items: any[]) {
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
-    // Mode Production Vercel - Écraser le blob existant
-    await put(CATALOG_BLOB_NAME, JSON.stringify(items, null, 2), {
-      access: 'public',
-      addRandomSuffix: false // Pour garder le même nom
-    })
-  } else {
-    // Mode Local
-    const dataFilePath = path.join(process.cwd(), 'data', 'catalog.json')
-    await fs.writeFile(dataFilePath, JSON.stringify(items, null, 2))
-  }
-}
-
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  const items = await getCatalogData()
-  return NextResponse.json(items)
+  try {
+    // 1. Tenter de lire dans Vercel KV (Production)
+    if (process.env.KV_REST_API_URL) {
+      let items = await kv.get('catalog')
+      
+      // Seed initial si KV est vide (première fois)
+      if (!items) {
+        try {
+          const fileContents = await fs.readFile(dataFilePath, 'utf8')
+          items = JSON.parse(fileContents)
+          await kv.set('catalog', items)
+        } catch { items = [] }
+      }
+      return NextResponse.json(items)
+    }
+
+    // 2. Fallback Local (Développement)
+    const fileContents = await fs.readFile(dataFilePath, 'utf8')
+    return NextResponse.json(JSON.parse(fileContents))
+  } catch (error) {
+    console.error('[Catalog GET]', error)
+    return NextResponse.json([])
+  }
 }
 
 export async function POST(req: Request) {
@@ -62,15 +46,24 @@ export async function POST(req: Request) {
 
   try {
     const body = await req.json()
-    const items = await getCatalogData()
     const newItem = { id: Date.now().toString(), ...body }
-    
-    items.unshift(newItem)
-    await saveCatalogData(items)
-    
-    return NextResponse.json({ success: true, item: newItem })
+
+    if (process.env.KV_REST_API_URL) {
+      // Production - Vercel KV
+      const items: any[] = (await kv.get('catalog')) || []
+      items.unshift(newItem)
+      await kv.set('catalog', items)
+      return NextResponse.json({ success: true, item: newItem })
+    } else {
+      // Local
+      const fileContents = await fs.readFile(dataFilePath, 'utf8')
+      const items = JSON.parse(fileContents)
+      items.unshift(newItem)
+      await fs.writeFile(dataFilePath, JSON.stringify(items, null, 2))
+      return NextResponse.json({ success: true, item: newItem })
+    }
   } catch (error: any) {
-    console.error('[Blob DB] Post error:', error)
+    console.error('[Catalog POST]', error)
     return NextResponse.json({ success: false, error: error.message }, { status: 500 })
   }
 }
@@ -84,16 +77,26 @@ export async function DELETE(req: Request) {
     const { searchParams } = new URL(req.url)
     const id = searchParams.get('id')
     if (!id) return NextResponse.json({ success: false, error: 'No ID provided' }, { status: 400 })
-      
-    let items = await getCatalogData()
-    items = items.filter((c: any) => c.id !== id)
-    await saveCatalogData(items)
-    
-    return NextResponse.json({ success: true })
+
+    if (process.env.KV_REST_API_URL) {
+      // Production - Vercel KV
+      let items: any[] = (await kv.get('catalog')) || []
+      items = items.filter((c: any) => c.id !== id)
+      await kv.set('catalog', items)
+      return NextResponse.json({ success: true })
+    } else {
+      // Local
+      const fileContents = await fs.readFile(dataFilePath, 'utf8')
+      let items = JSON.parse(fileContents)
+      items = items.filter((c: any) => c.id !== id)
+      await fs.writeFile(dataFilePath, JSON.stringify(items, null, 2))
+      return NextResponse.json({ success: true })
+    }
   } catch (error: any) {
-    console.error('[Blob DB] Delete error:', error)
+    console.error('[Catalog DELETE]', error)
     return NextResponse.json({ success: false, error: error.message }, { status: 500 })
   }
 }
+
 
 
