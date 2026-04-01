@@ -208,7 +208,7 @@ export default function AdminPage() {
         <div className="flex justify-between items-end">
           <div>
             <h1 className="text-4xl font-bold mb-4 text-slate-900">Espace Admin - Catalogue</h1>
-            <p className="text-slate-600">Ajoutez des Voitures, Pièces détachées, ou lots de Cosmétiques (Multi-Photos suportées).</p>
+            <p className="text-slate-600">Ajoutez des Voitures, Pièces détachées, ou lots de Cosmétiques (Multi-Photos supportées).</p>
           </div>
           <Button variant="outline" onClick={() => setIsAuthenticated(false)} className="rounded-xl">Se déconnecter</Button>
         </div>
@@ -222,56 +222,123 @@ export default function AdminPage() {
               <button onClick={() => setSelectedType("cosmetic")} className={`px-4 py-2 rounded-xl text-sm font-bold ${selectedType === "cosmetic" ? "bg-white shadow-sm text-primary" : "text-gray-500"}`}>Cosmétique</button>
             </div>
           </div>
-          <form onSubmit={handleAdd} className="space-y-6">
+          <form onSubmit={handleAdd} className="space-y-8 animate-in fade-in duration-700">
+            {/* Informations de base (Communes) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-bold opacity-70">Titre ({selectedType === "car" ? "Marque & Modèle" : selectedType === "part" ? "Nom de la pièce" : "Nom du lot"})</label>
-                <Input name="title" required placeholder="Ex: Mercedes Classe C" className="h-14 bg-gray-50/80 rounded-2xl" />
+                <label className="text-sm font-bold opacity-70 flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  {selectedType === "car" ? "Marque & Modèle" : selectedType === "part" ? "Nom de la pièce" : "Nom du produit / lot"}
+                </label>
+                <Input name="title" required placeholder={selectedType === "car" ? "Ex: Mercedes-Benz GLE 350" : "Ex: Huile Moteur 5W30"} className="h-14 bg-gray-50/80 rounded-2xl border-none focus-visible:ring-2 focus-visible:ring-primary/20 transition-all font-medium" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold opacity-70">Prix au Port (Dakar/Abidjan)</label>
-                <Input name="pricePort" required placeholder="Ex: 11 000 000 FCFA" className="h-14 bg-gray-50/80 rounded-2xl" />
+                <label className="text-sm font-bold opacity-70 flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Prix au Port (Dakar/Abidjan)
+                </label>
+                <Input name="pricePort" required placeholder="Ex: 11 000 000 FCFA" className="h-14 bg-gray-50/80 rounded-2xl border-none focus-visible:ring-2 focus-visible:ring-primary/20 transition-all font-medium" />
               </div>
               <div className="space-y-2 sm:col-span-2">
-                <label className="text-sm font-bold opacity-70">Prix rendu au Pays (Mali/Niger) - Sera affiché en très grand</label>
-                <Input name="priceCountry" required placeholder="Ex: 12 100 000 FCFA" className="h-14 bg-gray-50/80 rounded-2xl border-primary/30" />
+                <label className="text-sm font-bold opacity-70 flex items-center gap-2 text-primary">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  Prix rendu au Pays (Mali/Niger) — Destination Finale
+                </label>
+                <Input name="priceCountry" required placeholder="Ex: 12 100 000 FCFA" className="h-14 bg-primary/[0.03] rounded-2xl border-primary/20 focus-visible:ring-2 focus-visible:ring-primary/40 transition-all font-bold text-primary placeholder:text-primary/30" />
               </div>
             </div>
 
-            <div className="pt-6 mt-6 border-t border-border/40">
-              <h3 className="text-lg font-bold mb-4">Caractéristiques Détailées</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-primary">{selectedType === "car" ? "Carburant" : selectedType === "part" ? "Marque compatible" : "Marque / Origine"}</label>
-                  <Input name="spec1" required placeholder={selectedType === "car" ? "Ex: Essence" : "Ex: Toyota"} className="h-14 bg-gray-50/80 rounded-xl" />
+            {/* Formulaire spécifique : VOITURES */}
+            {selectedType === "car" && (
+              <div className="pt-8 mt-8 border-t border-dashed border-border animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" /></svg>
+                  </div>
+                  <h3 className="text-xl font-bold">Spécifications du Véhicule</h3>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-primary">{selectedType === "car" ? "Kilométrage" : selectedType === "part" ? "État" : "Quantité"}</label>
-                  <Input name="spec2" required placeholder={selectedType === "car" ? "Ex: 65 000 km" : "Ex: Très bon état"} className="h-14 bg-gray-50/80 rounded-xl" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-primary">{selectedType === "car" ? "Année / Modèle" : selectedType === "part" ? "Année / Version" : "Catégorie"}</label>
-                  <Input name="spec3" placeholder={selectedType === "car" ? "Ex: 2021" : "Ex: Soins Visage"} className="h-14 bg-gray-50/80 rounded-xl" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-primary">{selectedType === "car" ? "Transmission" : selectedType === "part" ? "Poids / Dimension" : "Conditionnement"}</label>
-                  <Input name="spec4" placeholder={selectedType === "car" ? "Ex: Automatique" : "Ex: Palette"} className="h-14 bg-gray-50/80 rounded-xl" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-primary">{selectedType === "car" ? "Couleur" : selectedType === "part" ? "Référence / OEM" : "DLC / DLUO"}</label>
-                  <Input name="spec5" placeholder={selectedType === "car" ? "Ex: Noir Métallisé" : "Ex: Non applicable"} className="h-14 bg-gray-50/80 rounded-xl" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-primary">{selectedType === "car" ? "Moteur / Puissance" : selectedType === "part" ? "Origine" : "Autre Info"}</label>
-                  <Input name="spec6" placeholder={selectedType === "car" ? "Ex: 2.0L - 190ch" : "Ex: Allemagne"} className="h-14 bg-gray-50/80 rounded-xl" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { name: "spec1", label: "Carburant", placeholder: "Ex: Essence / Hybride", icon: "⛽" },
+                    { name: "spec2", label: "Kilométrage", placeholder: "Ex: 45 000 km", icon: "📍" },
+                    { name: "spec3", label: "Année / Millésime", placeholder: "Ex: 2022", icon: "📅" },
+                    { name: "spec4", label: "Boîte de Vitesse", placeholder: "Ex: Automatique 9G", icon: "⚙️" },
+                    { name: "spec5", label: "Couleur Extérieure", placeholder: "Ex: Gris Montagne", icon: "🎨" },
+                    { name: "spec6", label: "Moteur / Puissance", placeholder: "Ex: 2.0 L - 194 ch", icon: "⚡" },
+                  ].map((field) => (
+                    <div key={field.name} className="space-y-2">
+                      <label className="text-[11px] uppercase font-bold text-blue-600/70 tracking-wider flex items-center gap-1.5 ml-1">
+                        <span>{field.icon}</span> {field.label}
+                      </label>
+                      <Input name={field.name} required placeholder={field.placeholder} className="h-12 bg-gray-50/50 rounded-xl border-none focus-visible:ring-2 focus-visible:ring-blue-500/20 transition-all" />
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Formulaire spécifique : PIÈCES */}
+            {selectedType === "part" && (
+              <div className="pt-8 mt-8 border-t border-dashed border-border animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-orange-50 text-orange-600 rounded-xl">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>
+                  </div>
+                  <h3 className="text-xl font-bold">Détails de la Pièce</h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { name: "spec1", label: "Compatibilité", placeholder: "Ex: Classe C / E / Sprinter", icon: "🚗" },
+                    { name: "spec2", label: "État", placeholder: "Ex: Neuf / Occasion certifiée", icon: "💎" },
+                    { name: "spec3", label: "Référence OEM", placeholder: "Ex: A651 911 00 23", icon: "🔢" },
+                    { name: "spec4", label: "Poids / Dimension", placeholder: "Ex: 190 kg / Palette", icon: "秤" },
+                    { name: "spec5", label: "Marque / Constructeur", placeholder: "Ex: Mercedes-Benz / Bosch", icon: "🏷️" },
+                    { name: "spec6", label: "Origine", placeholder: "Ex: Allemagne (Stuttgart)", icon: "📍" },
+                  ].map((field) => (
+                    <div key={field.name} className="space-y-2">
+                      <label className="text-[11px] uppercase font-bold text-orange-600/70 tracking-wider flex items-center gap-1.5 ml-1">
+                        <span>{field.icon}</span> {field.label}
+                      </label>
+                      <Input name={field.name} required placeholder={field.placeholder} className="h-12 bg-gray-50/50 rounded-xl border-none focus-visible:ring-2 focus-visible:ring-orange-500/20 transition-all" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Formulaire spécifique : COSMÉTIQUES */}
+            {selectedType === "cosmetic" && (
+              <div className="pt-8 mt-8 border-t border-dashed border-border animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-pink-50 text-pink-600 rounded-xl">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.628.281a2 2 0 01-1.806 0l-.628-.281a6 6 0 00-3.86-.517l-2.387.477a2 2 0 00-1.022.547l-1.16 1.16a2 2 0 000 2.828l1.16 1.16a2 2 0 001.022.547l2.387.477a6 6 0 003.86-.517l.628-.281a2 2 0 011.806 0l.628.281a6 6 0 003.86.517l2.387-.477a2 2 0 001.022-.547l1.16-1.16a2 2 0 000-2.828l-1.16-1.16z" /></svg>
+                  </div>
+                  <h3 className="text-xl font-bold">Détails du Lot Cosmétique</h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { name: "spec1", label: "Marque / Gamme", placeholder: "Ex: Balea / Eucerin", icon: "🏷️" },
+                    { name: "spec2", label: "Quantité / Volume", placeholder: "Ex: Lot de 500 unités", icon: "📦" },
+                    { name: "spec3", label: "Catégorie", placeholder: "Ex: Soins Visage / Hygiène", icon: "✨" },
+                    { name: "spec4", label: "Conditionnement", placeholder: "Ex: Cartons scellés / Palette", icon: "🛡️" },
+                    { name: "spec5", label: "DLC / DLUO", placeholder: "Ex: Minimum 12 mois", icon: "⏳" },
+                    { name: "spec6", label: "Autres Infos", placeholder: "Ex: Mix de produits", icon: "ℹ️" },
+                  ].map((field) => (
+                    <div key={field.name} className="space-y-2">
+                       <label className="text-[11px] uppercase font-bold text-pink-600/70 tracking-wider flex items-center gap-1.5 ml-1">
+                        <span>{field.icon}</span> {field.label}
+                      </label>
+                      <Input name={field.name} required placeholder={field.placeholder} className="h-12 bg-gray-50/50 rounded-xl border-none focus-visible:ring-2 focus-visible:ring-pink-500/20 transition-all" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-border/40 pt-6">
-              <div className="space-y-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-dashed border-border pt-8">
+              <div className="space-y-4">
                 <label className="text-sm font-bold opacity-70 flex items-center gap-2">
-                  <Images className="w-4 h-4" /> Téléverser photos réelles
+                  <Images className="w-5 h-5 text-primary" /> Téléverser photos réelles
                 </label>
                 <div className="relative group">
                    <input 
@@ -282,22 +349,24 @@ export default function AdminPage() {
                     onChange={handleFileChange}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                    />
-                   <div className="h-32 border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center bg-gray-50 group-hover:bg-gray-100 group-hover:border-primary/30 transition-all">
-                      <Images className="w-8 h-8 text-gray-400 mb-2 group-hover:text-primary transition-colors" />
-                      <p className="text-xs font-bold text-gray-500 group-hover:text-primary">Ajouter des photos</p>
-                      <p className="text-[10px] text-gray-400 mt-1">Multi-sélection supportée</p>
+                   <div className="h-40 border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center bg-gray-50 group-hover:bg-primary/[0.02] group-hover:border-primary/30 transition-all duration-300">
+                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition-transform">
+                        <Images className="w-6 h-6 text-primary" />
+                      </div>
+                      <p className="text-xs font-bold text-gray-900">Glissez-déposez ou cliquez</p>
+                      <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-wider">Multi-sélection supportée</p>
                    </div>
                 </div>
 
                 {previewImages.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-4 max-h-40 overflow-y-auto p-2 bg-gray-50 rounded-xl border border-gray-100">
+                  <div className="flex flex-wrap gap-3 mt-4 max-h-60 overflow-y-auto p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
                     {previewImages.map((src, idx) => (
-                      <div key={idx} className="relative group/preview w-20 h-20 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-                        <img src={src} className="w-full h-full object-cover" alt={`Prévisualisation ${idx}`} />
+                      <div key={idx} className="relative group/preview w-20 h-20 rounded-xl overflow-hidden border-2 border-white shadow-md">
+                        <img src={src} className="w-full h-full object-cover transition-transform duration-300 group-hover/preview:scale-110" alt={`Prévisualisation ${idx}`} />
                         <button 
                           type="button" 
                           onClick={() => removeFile(idx)}
-                          className="absolute inset-0 bg-black/40 text-white flex items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity"
+                          className="absolute inset-0 bg-black/60 text-white flex items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity"
                         >
                           <Trash2 className="w-5 h-5" />
                         </button>
@@ -307,43 +376,51 @@ export default function AdminPage() {
                 )}
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <label className="text-sm font-bold opacity-70 flex items-center gap-2">
-                  <Images className="w-4 h-4" /> Ou liens photos externes
+                  <Images className="w-5 h-5 text-primary" /> Liens photos externes
                 </label>
                 <textarea  
                   name="images" 
-                  placeholder="https://images.unsplash.com/..." 
-                  className="w-full h-32 bg-gray-50/80 rounded-2xl p-4 border border-border/40 focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none text-sm" 
+                  placeholder="https://images.unsplash.com/photo-..." 
+                  className="w-full h-40 bg-gray-50/50 rounded-3xl p-5 border-none focus:ring-2 focus:ring-primary/20 resize-none text-sm transition-all font-mono placeholder:font-sans" 
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-bold opacity-70">Courte Description</label>
-              <Input name="desc" required placeholder="Ex: État impeccable, certifié. Volant cuir, toit ouvrant." className="h-14 bg-gray-50/80 rounded-2xl" />
+            <div className="space-y-2 border-t border-dashed border-border pt-8">
+              <label className="text-sm font-bold opacity-70 flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                Courte Description de l'annonce
+              </label>
+              <Input name="desc" required placeholder={selectedType === "car" ? "Ex: État impeccable, certifié. Volant cuir, toit ouvrant." : "Ex: Lot complet prêt à l'exportation."} className="h-14 bg-gray-50/80 rounded-2xl border-none focus-visible:ring-2 focus-visible:ring-primary/20" />
             </div>
 
-            {/* Bandeau d'erreur */}
+            {/* Message d'erreur */}
             {formError && (
-              <div className="flex items-start gap-3 bg-red-50 border border-red-200 text-red-700 rounded-2xl p-4">
+              <div className="flex items-start gap-3 bg-red-50 border border-red-100 text-red-600 rounded-2xl p-5 animate-in shake duration-300">
                 <AlertCircle className="w-5 h-5 mt-0.5 shrink-0" />
-                <p className="text-sm font-semibold">{formError}</p>
+                <p className="text-sm font-bold leading-relaxed">{formError}</p>
               </div>
             )}
 
-            {/* Bandeau de succès */}
+            {/* Message de succès */}
             {formSuccess && (
-              <div className="flex items-start gap-3 bg-green-50 border border-green-200 text-green-700 rounded-2xl p-4">
+              <div className="flex items-start gap-3 bg-green-50 border border-green-100 text-green-600 rounded-2xl p-5 animate-in slide-in-from-top-2 duration-300">
                 <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" />
-                <p className="text-sm font-semibold">{formSuccess}</p>
+                <p className="text-sm font-bold leading-relaxed">{formSuccess}</p>
               </div>
             )}
 
-            <Button type="submit" size="lg" disabled={isUploading} className="w-full h-16 text-lg font-bold rounded-2xl bg-primary">
+            <Button type="submit" size="lg" disabled={isUploading} className="w-full h-20 text-xl font-black rounded-3xl bg-primary hover:shadow-2xl hover:shadow-primary/30 active:scale-[0.98] transition-all shadow-xl group">
               {isUploading ? (
-                <span className="flex items-center gap-2"><Loader2 className="w-5 h-5 animate-spin" /> Téléversement en cours...</span>
-              ) : "Mettre en ligne sur le site"}
+                <span className="flex items-center gap-2"><Loader2 className="w-6 h-6 animate-spin" /> Publication en cours...</span>
+              ) : (
+                <span className="flex items-center gap-3">
+                   PUBLIER L'ANNONCE
+                   <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </span>
+              )}
             </Button>
           </form>
         </div>
@@ -373,8 +450,18 @@ export default function AdminPage() {
                       <span className="text-[10px] font-bold uppercase tracking-wider bg-white border border-gray-200 text-gray-500 px-2 py-0.5 rounded shadow-sm">{item.type}</span>
                       <h3 className="font-bold text-lg">{item.title}</h3>
                     </div>
-                    <p className="text-sm font-medium text-slate-500 mb-1">
-                      {item.pricePort} (Port) / {item.priceCountry} (Pays) - {item.meta1} - {item.meta2}
+                    <p className="text-sm font-bold text-slate-700 mb-1 flex items-center gap-2 flex-wrap">
+                      <span className="text-primary bg-primary/5 px-2 py-0.5 rounded-lg border border-primary/10">{item.priceCountry}</span>
+                      <span className="text-[10px] opacity-30 font-normal">|</span>
+                      <span className="opacity-80">{item.spec1 || item.meta1}</span>
+                      <span className="text-[10px] opacity-30">•</span>
+                      <span className="opacity-80">{item.spec2 || item.meta2}</span>
+                      {(item.spec3 || item.spec4) && (
+                        <>
+                          <span className="text-[10px] opacity-30">•</span>
+                          <span className="opacity-60 text-xs">{item.spec3 || item.spec4}</span>
+                        </>
+                      )}
                     </p>
                     <p className="text-xs text-slate-400">{item.desc}</p>
                   </div>
