@@ -165,6 +165,16 @@ function ProductCard({ item, index, onClick }: { item: any, index: number, onCli
             <p className="text-[10px] uppercase tracking-[0.1em] text-primary font-bold bg-white px-3 py-1.5 rounded-full shadow-xl">
               🇲🇱/🇳🇪 Rendu: {item.priceCountry}
             </p>
+            {item.status === "sold" && (
+               <p className="text-[10px] uppercase tracking-[0.1em] text-white font-bold bg-red-600 px-3 py-1.5 rounded-full shadow-xl">
+                Vendu
+              </p>
+            )}
+            {item.status === "coming_soon" && (
+               <p className="text-[10px] uppercase tracking-[0.1em] text-white font-bold bg-amber-500 px-3 py-1.5 rounded-full shadow-xl">
+                Arrivage
+              </p>
+            )}
           </div>
           
           <h3 className="text-luxury text-3xl md:text-3xl font-bold text-white mb-3 drop-shadow-md">{item.title}</h3>
@@ -241,6 +251,16 @@ function ProductModal({ item, onClose }: { item: any, onClose: () => void }) {
                     <span className="bg-primary/90 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-lg shadow-sm backdrop-blur-md">
                       {item.type === "car" ? "Automobile" : item.type === "part" ? "Pièce / Moteur" : "Lot Cosmétique"}
                     </span>
+                    {item.status === "sold" && (
+                       <span className="ml-2 bg-red-600 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-lg shadow-sm backdrop-blur-md">
+                        Vendu
+                      </span>
+                    )}
+                    {item.status === "coming_soon" && (
+                       <span className="ml-2 bg-amber-500 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-lg shadow-sm backdrop-blur-md">
+                        Arrivage
+                      </span>
+                    )}
                   </div>
                </div>
 
@@ -263,12 +283,12 @@ function ProductModal({ item, onClose }: { item: any, onClose: () => void }) {
                 <h4 className="text-2xl font-black mb-6 text-foreground">Critères de l'annonce</h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-0 border-t border-l border-border/60 rounded-2xl overflow-hidden shadow-sm">
                    {[
-                     { label: item.type === "car" ? "Carburant" : item.type === "part" ? "Compatible" : "Marque", value: item.spec1 || item.meta1 },
-                     { label: item.type === "car" ? "Kilométrage" : item.type === "part" ? "État" : "Quantité", value: item.spec2 || item.meta2 },
-                     { label: item.type === "car" ? "Année-Modèle" : item.type === "part" ? "Version" : "Catégorie", value: item.spec3 },
-                     { label: item.type === "car" ? "Boîte de vitesse" : item.type === "part" ? "Poids (kg)" : "Format", value: item.spec4 },
-                     { label: item.type === "car" ? "Teinte / Couleur" : item.type === "part" ? "Réf. OEM" : "DLUO Maxi", value: item.spec5 },
-                     { label: item.type === "car" ? "Motorisation" : item.type === "part" ? "Fabriquant" : "Informations", value: item.spec6 },
+                     { label: item.type === "car" ? "Carburant" : item.type === "part" ? "Compatibilité" : "Marque / Gamme", value: item.spec1 || item.meta1 },
+                     { label: item.type === "car" ? "Kilométrage" : item.type === "part" ? "État" : "Quantité / Volume", value: item.spec2 || item.meta2 },
+                     { label: item.type === "car" ? "Année / Millésime" : item.type === "part" ? "Référence OEM" : "Catégorie", value: item.spec3 },
+                     { label: item.type === "car" ? "Boîte de Vitesse" : item.type === "part" ? "Poids / Dimension" : "Conditionnement", value: item.spec4 },
+                     { label: item.type === "car" ? "Couleur Extérieure" : item.type === "part" ? "Marque" : "DLC / DLUO", value: item.spec5 },
+                     { label: item.type === "car" ? "Moteur / Puissance" : item.type === "part" ? "Origine" : "Autres Infos", value: item.spec6 },
                    ].map((spec, idx) => spec.value ? (
                      <div key={idx} className="flex flex-col border-b border-r border-border/60 p-4 sm:p-5 bg-card hover:bg-muted/30 transition-colors">
                        <span className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest font-bold opacity-80">{spec.label}</span>

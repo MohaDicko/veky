@@ -138,6 +138,8 @@ export default function AdminPage() {
       image: imagesList[0],
       images: imagesList,
       desc: formData.get("desc"),
+      status: formData.get("status") || "available",
+      createdAt: new Date().toISOString()
     }
     
     // ✅ Utiliser savedPassword.current ici aussi
@@ -239,12 +241,23 @@ export default function AdminPage() {
                 </label>
                 <Input name="pricePort" required placeholder="Ex: 11 000 000 FCFA" className="h-14 bg-gray-50/80 rounded-2xl border-none focus-visible:ring-2 focus-visible:ring-primary/20 transition-all font-medium" />
               </div>
-              <div className="space-y-2 sm:col-span-2">
+              <div className="space-y-2">
                 <label className="text-sm font-bold opacity-70 flex items-center gap-2 text-primary">
                   <div className="w-2 h-2 rounded-full bg-primary" />
-                  Prix rendu au Pays (Mali/Niger) — Destination Finale
+                  Prix rendu au Pays (Mali/Niger)
                 </label>
                 <Input name="priceCountry" required placeholder="Ex: 12 100 000 FCFA" className="h-14 bg-primary/[0.03] rounded-2xl border-primary/20 focus-visible:ring-2 focus-visible:ring-primary/40 transition-all font-bold text-primary placeholder:text-primary/30" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold opacity-70 flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                  Statut de disponibilité
+                </label>
+                <select name="status" className="w-full h-14 bg-gray-50/80 rounded-2xl px-4 border-none focus:ring-2 focus:ring-primary/20 transition-all font-medium appearance-none">
+                  <option value="available">✅ En Stock / Disponible</option>
+                  <option value="sold">🔴 Vendu / Indisponible</option>
+                  <option value="coming_soon">⏳ Arrivage Prochain</option>
+                </select>
               </div>
             </div>
 
@@ -448,6 +461,8 @@ export default function AdminPage() {
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-[10px] font-bold uppercase tracking-wider bg-white border border-gray-200 text-gray-500 px-2 py-0.5 rounded shadow-sm">{item.type}</span>
+                      {item.status === "sold" && <span className="text-[10px] font-bold uppercase bg-red-100 text-red-600 px-2 py-0.5 rounded">Vendu</span>}
+                      {item.status === "coming_soon" && <span className="text-[10px] font-bold uppercase bg-amber-100 text-amber-600 px-2 py-0.5 rounded">Arrivage</span>}
                       <h3 className="font-bold text-lg">{item.title}</h3>
                     </div>
                     <p className="text-sm font-bold text-slate-700 mb-1 flex items-center gap-2 flex-wrap">
