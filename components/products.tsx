@@ -10,7 +10,6 @@ import { useEffect, useState, useMemo } from "react"
 export function Products() {
   const { t } = useLanguage()
   const [items, setItems] = useState<any[]>([])
-  const [filter, setFilter] = useState("car")
   const [selectedItem, setSelectedItem] = useState<any>(null)
   
   useEffect(() => {
@@ -20,15 +19,11 @@ export function Products() {
       .catch(console.error)
   }, [])
 
-  const filteredItems = useMemo(() => items.filter(item => item.type === filter), [items, filter])
-
   const tabs = [
-    { id: "car", label: "Voitures", icon: CarFront, title: "Véhicules Sélectionnés" },
-    { id: "part", label: "Pièces Détachées", icon: Wrench, title: "Pièces & Outillage" },
-    { id: "cosmetic", label: "Lots Grossistes", icon: Sparkles, title: "Parfums & Cosmétiques" },
+    { id: "car", label: "Voitures", icon: CarFront },
+    { id: "part", label: "Pièces Détachées", icon: Wrench },
+    { id: "cosmetic", label: "Lots Grossistes", icon: Sparkles },
   ]
-
-  const currentTabInfo = tabs.find(t => t.id === filter)
 
   return (
     <>
@@ -38,57 +33,61 @@ export function Products() {
         className="py-24 lg:py-40 bg-muted/30 noise-texture overflow-hidden relative"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16">
-            <header className="max-w-2xl">
-              <p className="text-sm uppercase tracking-[0.4em] text-primary font-bold mb-6 flex items-center gap-3">
-                <span className="w-12 h-[1px] bg-primary/40" aria-hidden="true" />{t.products.label}
-              </p>
-              <h2 id="products-heading" className="text-luxury text-5xl sm:text-7xl font-bold text-foreground">
-                {currentTabInfo?.title}
-              </h2>
-            </header>
-            <Button
-              variant="outline"
-              className="rounded-full px-8 py-6 border-primary/20 hover:bg-primary hover:text-white transition-all duration-500 group shrink-0"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              {t.products.cta}
-              <ArrowUpRight className="ms-2 h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
-            </Button>
-          </div>
-
-          {/* Tabs Filter */}
-          <div className="flex flex-wrap items-center gap-3 mb-10 pb-4 overflow-x-auto no-scrollbar">
-            {tabs.map(tab => {
-              const Icon = tab.icon
+          {/* Sections Layout */}
+          <div className="space-y-32">
+            {tabs.map((category) => {
+              const categoryItems = items.filter(item => item.type === category.id);
+              const Icon = category.icon;
+              
               return (
-                <button
-                  key={tab.id}
-                  onClick={() => setFilter(tab.id)}
-                  className={cn(
-                    "flex items-center gap-2 px-6 py-3.5 rounded-[1.5rem] font-bold text-sm transition-all duration-500",
-                    filter === tab.id 
-                      ? "bg-primary text-white shadow-xl shadow-primary/25 scale-105" 
-                      : "bg-white/50 text-foreground border border-black/5 hover:border-primary/30 hover:bg-white"
+                <section key={category.id} className="animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-200">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-12 pb-6 border-b border-black/5">
+                    <div className="space-y-4">
+                      <div className={cn(
+                        "w-12 h-12 rounded-2xl flex items-center justify-center mb-4 shadow-sm",
+                        category.id === "car" ? "bg-blue-50 text-blue-600" : 
+                        category.id === "part" ? "bg-orange-50 text-orange-600" : "bg-pink-50 text-pink-600"
+                      )}>
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h3 className="text-3xl sm:text-4xl font-black text-foreground tracking-tight">{category.label}</h3>
+                        <p className="text-muted-foreground font-medium mt-2">
+                          {category.id === "car" ? "Véhicules d'exception importés d'Allemagne" : 
+                           category.id === "part" ? "Pièces d'origine et moteurs certifiés" : 
+                           "Produits de soins et cosmétiques en gros lots"}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="bg-white/50 backdrop-blur-md px-4 py-2 rounded-full border border-black/5 flex items-center gap-2">
+                       <span className="w-2 h-2 rounded-full bg-primary" />
+                       <span className="text-[10px] uppercase font-bold tracking-widest text-foreground/70">{categoryItems.length} Annonces</span>
+                    </div>
+                  </div>
+
+                  {categoryItems.length > 0 ? (
+                    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10" role="list">
+                      {categoryItems.slice(0, 6).map((item, index) => (
+                        <ProductCard key={item.id} item={item} index={index} onClick={() => setSelectedItem(item)} />
+                      ))}
+                    </ul>
+                  ) : (
+                    <div className="py-20 text-center bg-white/30 rounded-[3rem] border-2 border-dashed border-black/5">
+                      <p className="text-muted-foreground font-bold">Aucune annonce disponible dans cette catégorie.</p>
+                    </div>
                   )}
-                >
-                  <Icon className="w-4 h-4" /> {tab.label}
-                </button>
-              )
+
+                  {categoryItems.length > 6 && (
+                    <div className="mt-16 flex justify-center">
+                       <Button variant="outline" className="rounded-full px-10 py-7 border-black/10 hover:border-primary hover:text-primary transition-all font-bold text-sm tracking-widest uppercase">
+                         Voir toute la gamme {category.label}
+                       </Button>
+                    </div>
+                  )}
+                </section>
+              );
             })}
           </div>
-
-          {/* Grid of items */}
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch" role="list">
-            {filteredItems.map((item, index) => (
-               <ProductCard key={item.id} item={item} index={index} onClick={() => setSelectedItem(item)} />
-            ))}
-            {filteredItems.length === 0 && (
-               <div className="col-span-full py-20 text-center">
-                  <p className="text-muted-foreground font-bold text-lg">Aucune annonce disponible dans cette catégorie pour le moment.</p>
-               </div>
-            )}
-          </ul>
         </div>
       </section>
 
